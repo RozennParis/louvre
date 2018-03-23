@@ -2,12 +2,45 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta description="">
+        <title>{% block title %}Billetterie Louvre{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        <nav role="navigation">
+            <ul>
+                <li>Langue</li>
+                <li><a href="https://www.louvre.fr/">Le Louvre</a></li>
+            </ul>
+        </nav>
+        <header>
+            <div>
+                <img src="{{ asset('images/logo-louvre.jpg') }}" alt="logo du Louvre">
+                <h1>Billetterie officielle</h1>
+            </div>
+            <div>
+                <img src="{{ asset('images/architecture-1868312_1280.jpg') }}" alt="photo louvre de nuit">
+            </div>
+        </header>
+
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+
+        <footer>
+            <div>
+                images solutions paiement (logo cartes...)
+            </div>
+            <div>
+                <a href="">Contact</a>
+                <a href="">Infos pratiques</a>
+                logos réseaux sociaux
+                <a href="">Mentions légales</a>
+                <a href="">CGV</a>
+            </div>
+
+
+        </footer>
     </body>
 </html>

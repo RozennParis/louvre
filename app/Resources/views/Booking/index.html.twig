@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{parent()}} - Etape 1
+{% endblock %}
+
+{% block body %}
+   <main class="container">
+       <div class="row">
+           <div class="">
+               <h2>Etape 1</h2>
+           </div>
+           <div>
+               <h3>1-Date</h3>
+           </div>
+           <div>
+               {{ form_start(form) }}
+
+               {{ form_end(form) }}
+
+
+           </div>
+       </div>
+   </main>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
