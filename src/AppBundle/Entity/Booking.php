@@ -57,7 +57,7 @@ class Booking
 
     /**
      * @var int
-     * @Assert\Type("integer)
+     * @Assert\Type("integer")
      * @ORM\Column(name="numberOfTickets", type="integer")
      */
     private $numberOfTickets;

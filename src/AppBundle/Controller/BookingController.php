@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Booking;
+use AppBundle\Entity\Ticket;
 use AppBundle\Form\BookingType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -27,10 +28,11 @@ class BookingController extends AbstractController
         if($bookingForm->isSubmitted() && $bookingForm->isValid())
         {
             //sauvegarder en session booking
+            $request->getSession();
+
             // rediriger vers step2
-            return $this->render('Booking/ticket.html.twig', [
-                'form'=>$bookingForm->createView()
-            ]);
+            return $this->redirectToRoute('Booking/ticket.html.twig');
+
         }
 
         // replace this example code with whatever you need
@@ -38,4 +40,6 @@ class BookingController extends AbstractController
             'form'=>$bookingForm->createView()
         ]);
     }
+
+
 }

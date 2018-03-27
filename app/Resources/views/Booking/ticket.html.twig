@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{parent()}} - Etape 2
+{% endblock %}
+
+{% block body %}
+    <main class="container">
+        <div class="row">
+            <div class="">
+                <h2>Etape 2</h2>
+            </div>
+            <div>
+                <h3>Tickets</h3>
+            </div>
+            {% for i in 1..Booking.numberOfTickets %}
+            <div>
+                {{ form_start(form) }}
+
+                {{ form_end(form) }}
+            {% endfor %}
+
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
