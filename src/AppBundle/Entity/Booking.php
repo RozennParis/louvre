@@ -2,7 +2,9 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Booking
@@ -27,51 +29,58 @@ class Booking
 
     /**
      * @var \DateTime
-     *
+     * @Assert\Date()
      * @ORM\Column(name="bookingDate", type="datetime")
      */
     private $bookingDate;
 
     /**
      * @var string
-     *
+     * @Assert\Email()
      * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
 
     /**
      * @var string
-     *
+     * @Assert\Type("bool")
      * @ORM\Column(name="typeOfTicket", type="boolean")
      */
     private $typeOfTicket = self::TYPE_OF_TICKET_DAY;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\Date()
      * @ORM\Column(name="visitDate", type="datetime")
      */
     private $visitDate;
 
     /**
      * @var int
-     *
+     * @Assert\Type("integer)
      * @ORM\Column(name="numberOfTickets", type="integer")
      */
     private $numberOfTickets;
 
     /**
      * @var int
-     *
+     * @Assert\Type("integer")
      * @ORM\Column(name="totalPrice", type="integer")
      */
     private $totalPrice;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ticket", mappedBy="booking")
+     */
+    private $tickets;
 
 
     public function __construct()
     {
         $this->bookingDate = new \DateTime();
+        $this->tickets = new ArrayCollection();
     }
+
     /**
      * Get id
      *
@@ -225,5 +234,33 @@ class Booking
     {
         return $this->totalPrice;
     }
-}
 
+    /**
+     * Add ticket
+     * @param Ticket $ticket
+     * @return Booking
+     */
+    public function addTicket(Ticket $ticket)
+    {
+        $this->tickets[] = $ticket;
+        return $this;
+    }
+
+    /**
+     * Remove ticket
+     * @param Ticket $ticket
+     */
+    public function removeTicket(Ticket $ticket)
+    {
+        $this->tickets->removeElement($ticket);
+    }
+
+    /**
+     * Get tickets
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTickets()
+    {
+        return $this->tickets;
+    }
+}

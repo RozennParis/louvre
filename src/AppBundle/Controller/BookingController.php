@@ -21,21 +21,21 @@ class BookingController extends AbstractController
     public function indexAction(Request $request, SessionInterface $session)
     {
         $booking = new Booking();
-        $form = $this->createForm(BookingType::class, $booking);
+        $bookingForm = $this->createForm(BookingType::class, $booking);
 
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid())
+        $bookingForm->handleRequest($request);
+        if($bookingForm->isSubmitted() && $bookingForm->isValid())
         {
             //sauvegarder en session booking
             // rediriger vers step2
             return $this->render('Booking/ticket.html.twig', [
-                'form'=>$form->createView()
+                'form'=>$bookingForm->createView()
             ]);
         }
 
         // replace this example code with whatever you need
         return $this->render('Booking/index.html.twig', [
-            'form'=>$form->createView()
+            'form'=>$bookingForm->createView()
         ]);
     }
 }

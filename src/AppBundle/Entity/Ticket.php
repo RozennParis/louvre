@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Ticket
@@ -12,6 +13,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Ticket
 {
+    const ADULT_PRICE = 16;
+    const CHILD_UNDER_4_PRICE = 0;
+    const CHILD_PRICE = 8;
+    const SENIOR_PRICE = 12;
+    const REDUCE_PRICE = 10;
+
+
     /**
      * @var int
      *
@@ -23,25 +31,24 @@ class Ticket
 
     /**
      * @var string
-     *
+     * @Assert\Type("string)
      * @ORM\Column(name="lastName", type="string", length=255)
      */
     private $lastName;
 
     /**
      * @var string
-     *
+     * @Assert\Type("string)
      * @ORM\Column(name="firstName", type="string", length=255)
      */
     private $firstName;
 
     /**
      * @var \DateTime
-     *
+     * @Assert\Date()
      * @ORM\Column(name="birthDate", type="datetime")
      */
     private $birthDate;
-
 
     /**
      * @var \string
@@ -50,6 +57,7 @@ class Ticket
     private $country;
 
     /**
+     * @Assert\Type("bool")
      * @ORM\Column(name="reduceRate", type="boolean")
      */
     private $reduceRate;
@@ -58,6 +66,11 @@ class Ticket
      * @ORM\Column(name="price", type="integer")
      */
     private $price;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Booking", inversedBy="tickets")
+     */
+    private $booking;
 
 
     /**
@@ -71,27 +84,27 @@ class Ticket
     }
 
     /**
-     * Set name
+     * Set lastName
      *
-     * @param string $name
+     * @param string $lastName
      *
      * @return Ticket
      */
-    public function setName($name)
+    public function setLastName($lastName)
     {
-        $this->name = $name;
+        $this->lastName = $lastName;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get lastName
      *
      * @return string
      */
-    public function getName()
+    public function getLastName()
     {
-        return $this->name;
+        return $this->lastName;
     }
 
     /**
@@ -188,5 +201,55 @@ class Ticket
     public function getReduceRate()
     {
         return $this->reduceRate;
+    }
+
+
+
+    /**
+     * Set price
+     *
+     * @param integer $price
+     *
+     * @return Ticket
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return integer
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set booking
+     *
+     * @param \AppBundle\Entity\Booking $booking
+     *
+     * @return Ticket
+     */
+    public function setBooking(Booking $booking = null)
+    {
+        $this->booking = $booking;
+
+        return $this;
+    }
+
+    /**
+     * Get booking
+     *
+     * @return \AppBundle\Entity\Booking
+     */
+    public function getBooking()
+    {
+        return $this->booking;
     }
 }
