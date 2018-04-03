@@ -13,12 +13,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Ticket
 {
-    const ADULT_PRICE = 16;
-    const CHILD_UNDER_4_PRICE = 0;
-    const CHILD_PRICE = 8;
-    const SENIOR_PRICE = 12;
-    const REDUCE_PRICE = 10;
-
 
     /**
      * @var int
@@ -31,14 +25,14 @@ class Ticket
 
     /**
      * @var string
-     * @Assert\Type("string)
+     * @Assert\Type("string")
      * @ORM\Column(name="lastName", type="string", length=255)
      */
     private $lastName;
 
     /**
      * @var string
-     * @Assert\Type("string)
+     * @Assert\Type("string")
      * @ORM\Column(name="firstName", type="string", length=255)
      */
     private $firstName;
@@ -60,7 +54,7 @@ class Ticket
      * @Assert\Type("bool")
      * @ORM\Column(name="reduceRate", type="boolean")
      */
-    private $reduceRate;
+    private $reduceRate = false;
 
     /**
      * @ORM\Column(name="price", type="integer")

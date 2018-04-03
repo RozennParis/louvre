@@ -13,12 +13,12 @@
             <div>
                 <h3>Tickets</h3>
             </div>
-            {% for i in 1..Booking.numberOfTickets %}
             <div>
+                <hr/>
                 {{ form_start(form) }}
-
+                    {{ form_widget(form) }}
+                    <button type="submit" name="ticketValidation">Envoyer</button>
                 {{ form_end(form) }}
-            {% endfor %}
 
             </div>
         </div>

@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{parent()}} - Etape 3
+{% endblock %}
+
+{% block body %}
+    <main class="container">
+        <div class="row">
+            <div class="">
+                <h2>Etape 3</h2>
+            </div>
+            <div>
+                <h3>Récapitulatif de la commande</h3>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        <th>Prix unitaire en €</th>
+
+                    </tr>
+
+                    {% for ticket in tickets %}
+                    <tr>
+                        <td>{{ ticket.firstName }}</td>
+                        <td>{{ ticket.lastName }}</td>
+                        <td>{{ ticket.price }}</td>
+                    </tr>
+                    {%  endfor %}
+                    <tr>
+                        <td class="row">Total Commande</td>
+                        <td>{{ booking.totalPrice }}</td>
+                    </tr>
+                </table>
+
+                <button type="submit" name="ticketValidation">Payer</button>
+
+
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

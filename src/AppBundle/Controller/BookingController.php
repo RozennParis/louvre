@@ -6,6 +6,7 @@ use AppBundle\Entity\Booking;
 use AppBundle\Entity\Ticket;
 use AppBundle\Form\BookingType;
 use AppBundle\Form\TicketsType;
+use AppBundle\Services\Tarificator;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,7 +37,6 @@ class BookingController extends AbstractController
             }
             //sauvegarder en session booking
             $this->get('session')->set('booking', $booking);
-
 
             // rediriger vers step2
             return $this->redirectToRoute('ticket');
@@ -72,11 +72,31 @@ class BookingController extends AbstractController
 
         if($ticketForm->isSubmitted() && $ticketForm->isValid())
         {
-                //enregistrement en session
-                $this->get('session')->set('ticket', $booking);
-                echo '<pre>'; var_dump($booking->getTickets()); die;
+            //ticket price
 
-                //go to step3
+            $tickets = $booking->getTickets();
+
+            foreach ($tickets as $ticket)
+            {
+                $tarificator = new Tarificator();
+
+                $age = $tarificator->ageCalcul($booking->getVisitDate(), $ticket->getBirthDate());
+                $age = intval($age);
+                $price = $tarificator->priceOfTicket($ticket->getReduceRate(), $age);
+
+                $ticket->setPrice($price);
+
+            }
+
+            //totalPrice
+            $totalPrice = $tarificator->bookingPrice($booking, $tickets);
+            $booking->setTotalPrice($totalPrice);
+
+            //enregistrement en session
+            $this->get('session')->set('booking', $booking);
+
+
+            //go to step3
                 return $this->redirectToRoute('summary');
         }
 
@@ -93,6 +113,14 @@ class BookingController extends AbstractController
      */
     public function summaryAction(Request $request, SessionInterface $session)
     {
+        $booking = $session->get('booking');
+        $tickets = $booking->getTickets();
+
+        return $this->render('Booking/summary.html.twig', array(
+            'booking'=>$booking,
+            'tickets'=>$tickets
+        ));
+
 
     }
 }
