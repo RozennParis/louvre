@@ -57,9 +57,16 @@ class Ticket
     private $reduceRate = false;
 
     /**
+     * @Assert\Type("integrer")
      * @ORM\Column(name="price", type="integer")
      */
     private $price;
+
+    /**
+     * @Assert\Type("integer")
+     * @ORM\Column(name="age", type="integer")
+     */
+    private $age;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Booking", inversedBy="tickets")
@@ -224,6 +231,29 @@ class Ticket
     }
 
     /**
+     * Set price
+     *
+     * @param integer $price
+     *
+     * @return Ticket
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+    }
+
+    /**
+     * Get age
+     *
+     * @return string
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+
+    /**
      * Set booking
      *
      * @param \AppBundle\Entity\Booking $booking
@@ -246,4 +276,6 @@ class Ticket
     {
         return $this->booking;
     }
+
+
 }

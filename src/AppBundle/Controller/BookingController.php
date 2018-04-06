@@ -6,7 +6,9 @@ use AppBundle\Entity\Booking;
 use AppBundle\Entity\Ticket;
 use AppBundle\Form\BookingType;
 use AppBundle\Form\TicketsType;
+use AppBundle\Services\ageCalculator;
 use AppBundle\Services\Tarificator;
+use AppBundle\Services\Payment;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -55,7 +57,7 @@ class BookingController extends AbstractController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function ticketAction(Request $request, SessionInterface $session)
+    public function ticketAction(Request $request, SessionInterface $session, Tarificator $tarificator, ageCalculator $ageCalculator)
     {
         /**
          * @var Booking $booking
@@ -72,32 +74,28 @@ class BookingController extends AbstractController
 
         if($ticketForm->isSubmitted() && $ticketForm->isValid())
         {
-            //ticket price
-
+            //ticket price and total price
             $tickets = $booking->getTickets();
-
+            $totalPrice = 0;
             foreach ($tickets as $ticket)
             {
-                $tarificator = new Tarificator();
+                $age = $ageCalculator->ageCalcul($booking->getVisitDate(), $ticket->getBirthdate());
+                $ticket->setAge($age);
 
-                $age = $tarificator->ageCalcul($booking->getVisitDate(), $ticket->getBirthDate());
-                $age = intval($age);
-                $price = $tarificator->priceOfTicket($ticket->getReduceRate(), $age);
-
+                $price = $tarificator->priceOfTicket($ticket->getReduceRate(), $ticket->getAge());
                 $ticket->setPrice($price);
 
+                $totalPrice += $ticket->getPrice();
             }
 
-            //totalPrice
-            $totalPrice = $tarificator->bookingPrice($booking, $tickets);
             $booking->setTotalPrice($totalPrice);
 
-            //enregistrement en session
+            //session registration
+
             $this->get('session')->set('booking', $booking);
 
-
             //go to step3
-                return $this->redirectToRoute('summary');
+            return $this->redirectToRoute('summary');
         }
 
         return $this->render('Booking/ticket.html.twig', [
@@ -106,17 +104,48 @@ class BookingController extends AbstractController
     }
 
     /**
-     * @Route("/summary", name="summary")
+     * @Route(path="/summary", name="summary")
      * @Method({"GET","POST"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function summaryAction(Request $request, SessionInterface $session)
+    public function summaryAction(Request $request, SessionInterface $session, Payment $payment)
     {
         $booking = $session->get('booking');
         $tickets = $booking->getTickets();
 
-        return $this->render('Booking/summary.html.twig', array(
+       if ($request->getMethod() === Request::METHOD_POST)
+       {
+           $transactionId = $payment->payment($booking, $request->request->get('stripeToken'));
+           if (false !== $transactionId)
+           {
+               /*persist et flush
+            si ok >>> envoi mail*/
+            $this->addFlash("success","Le paiement a bien été effectué !");
+           return $this->redirectToRoute('final_summary');
+           }
+       }
+
+        return $this->render('Booking/summary.html.twig', [
+            'booking'=>$booking,
+            'tickets'=>$tickets
+        ]);
+    }
+
+
+
+    /**
+     * @Route("/final-summary", name="final_summary")
+     * @Method({"GET", "POST"}) //enlever le GET, juste pour tester au rafraichissement de la page
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function finalSummaryAction(Request $request, SessionInterface $session)
+    {
+        $booking = $session->get('booking');
+        $tickets = $booking->getTickets();
+
+        return $this->render('Booking/final-summary.html.twig', array(
             'booking'=>$booking,
             'tickets'=>$tickets
         ));

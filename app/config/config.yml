@@ -35,6 +35,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    globals:
+        stripe_public_key: '%stripe_public_key%'
 
 # Doctrine Configuration
 doctrine:
