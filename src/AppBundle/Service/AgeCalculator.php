@@ -2,22 +2,20 @@
 /**
  * Created by PhpStorm.
  * User: rozenn
- * Date: 05/04/18
- * Time: 16:47
+ * Date: 11/04/18
+ * Time: 14:25
  */
 
-namespace AppBundle\Services;
+namespace AppBundle\Service;
 
 use AppBundle\Entity\Booking;
 use AppBundle\Entity\Ticket;
 
-
-class ageCalculator
+class AgeCalculator
 {
     public function ageCalcul($visitDate, $birthDate)
     {
         $age = date_diff($visitDate, $birthDate);
-
         $age = get_object_vars($age);
         $age = $age['y'];
 

@@ -6,9 +6,9 @@
  * Time: 15:07
  */
 
-namespace AppBundle\Services;
+namespace AppBundle\Service;
 
-use AppBundle\Services\ageCalculator;
+use AppBundle\Service\AgeCalculator;
 
 
 class Tarificator
@@ -19,9 +19,9 @@ class Tarificator
     const SENIOR_PRICE = 12;
     const REDUCE_PRICE = 10;
 
+
     public function priceOfTicket($reduceRate,$age)
     {
-
         if (!$reduceRate) {
             switch ($age) {
                 case ($age>= 12 && $age< 60) :

@@ -17,3 +17,10 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+
+    # Stripe keys
+    stripe_private_key: ~
+    stripe_public_key: ~
+
+    #set to https on production
+    secure_channel: http

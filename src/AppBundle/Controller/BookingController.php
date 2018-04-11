@@ -2,13 +2,8 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Booking;
-use AppBundle\Entity\Ticket;
-use AppBundle\Form\BookingType;
-use AppBundle\Form\TicketsType;
-use AppBundle\Services\ageCalculator;
-use AppBundle\Services\Tarificator;
-use AppBundle\Services\Payment;
+use AppBundle\Manager\BookingManager;
+use AppBundle\Service\Payment;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,31 +18,17 @@ class BookingController extends AbstractController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request, SessionInterface $session)
+    public function indexAction(Request $request, BookingManager $bookingManager)
     {
-        $booking = new Booking();
-        $bookingForm = $this->createForm(BookingType::class, $booking);
+        $form = $bookingManager->booking($request);
 
-        $bookingForm->handleRequest($request);
-
-        if($bookingForm->isSubmitted() && $bookingForm->isValid())
+        if($form->isSubmitted() && $form->isValid())
         {
-            // préparer le nombre de tickets
-            for ($i = 1; $i <= $booking->getNumberOfTickets(); $i++)
-            {
-                $booking->addTicket(new Ticket());
-            }
-            //sauvegarder en session booking
-            $this->get('session')->set('booking', $booking);
-
-            // rediriger vers step2
             return $this->redirectToRoute('ticket');
-
         }
 
-        // replace this example code with whatever you need
         return $this->render('Booking/index.html.twig', [
-            'form'=>$bookingForm->createView()
+            'form'=>$form->createView()
         ]);
     }
 
@@ -57,54 +38,23 @@ class BookingController extends AbstractController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function ticketAction(Request $request, SessionInterface $session, Tarificator $tarificator, ageCalculator $ageCalculator)
+    public function ticketAction(Request $request, BookingManager $bookingManager)
     {
-        /**
-         * @var Booking $booking
-         */
-        $booking = $session->get('booking'); //gérer le cas où pas de booking
+        $form = $bookingManager->ticket($request);
 
-        if (!$booking)
+        if($form->isSubmitted() && $form->isValid())
         {
-            throw $this->createNotFoundException("La commande n'a pas été initialisée");
-        }
-
-        $ticketForm = $this->createForm(TicketsType::class, $booking);
-        $ticketForm->handleRequest($request);
-
-        if($ticketForm->isSubmitted() && $ticketForm->isValid())
-        {
-            //ticket price and total price
-            $tickets = $booking->getTickets();
-            $totalPrice = 0;
-            foreach ($tickets as $ticket)
-            {
-                $age = $ageCalculator->ageCalcul($booking->getVisitDate(), $ticket->getBirthdate());
-                $ticket->setAge($age);
-
-                $price = $tarificator->priceOfTicket($ticket->getReduceRate(), $ticket->getAge());
-                $ticket->setPrice($price);
-
-                $totalPrice += $ticket->getPrice();
-            }
-
-            $booking->setTotalPrice($totalPrice);
-
-            //session registration
-
-            $this->get('session')->set('booking', $booking);
-
             //go to step3
             return $this->redirectToRoute('summary');
         }
 
         return $this->render('Booking/ticket.html.twig', [
-                'form'=>$ticketForm->createView()
+                'form'=>$form->createView()
         ]);
     }
 
     /**
-     * @Route(path="/summary", name="summary")
+     * @Route(path="/summary", name="summary", schemes={"%secure_channel%"})
      * @Method({"GET","POST"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response

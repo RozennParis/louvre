@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Services;
+namespace AppBundle\Service;
 
 use AppBundle\Entity\Booking;
 
@@ -29,7 +29,7 @@ class Payment
             "amount" => $booking->getTotalPrice() * 100, // Amount in cents
             "currency" => "eur",
             "source" => $token,
-            "description" => "Stripe payment"
+            "description" => "Billetterie du Louvre"
             ]);
 
             return $charge['id'];
