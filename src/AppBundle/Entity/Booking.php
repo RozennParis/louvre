@@ -70,7 +70,7 @@ class Booking
     private $totalPrice;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ticket", mappedBy="booking")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ticket", mappedBy="booking", cascade={"persist"})
      */
     private $tickets;
 
@@ -243,6 +243,7 @@ class Booking
     public function addTicket(Ticket $ticket)
     {
         $this->tickets[] = $ticket;
+        $ticket->setBooking($this);
         return $this;
     }
 

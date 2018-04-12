@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\BookingType;
 use AppBundle\Manager\BookingManager;
 use AppBundle\Service\Payment;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -20,10 +21,14 @@ class BookingController extends AbstractController
      */
     public function indexAction(Request $request, BookingManager $bookingManager)
     {
-        $form = $bookingManager->booking($request);
+        $booking = $bookingManager->initBooking();
+        $form = $this->createForm(BookingType::class, $booking);
+
+        $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
+            $bookingManager->completeInit($booking);
             return $this->redirectToRoute('ticket');
         }
 
@@ -59,21 +64,14 @@ class BookingController extends AbstractController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function summaryAction(Request $request, SessionInterface $session, Payment $payment)
+    public function summaryAction(Request $request, BookingManager $bookingManager)
     {
-        $booking = $session->get('booking');
+        $booking = $bookingManager->summary($request);
         $tickets = $booking->getTickets();
 
        if ($request->getMethod() === Request::METHOD_POST)
        {
-           $transactionId = $payment->payment($booking, $request->request->get('stripeToken'));
-           if (false !== $transactionId)
-           {
-               /*persist et flush
-            si ok >>> envoi mail*/
-            $this->addFlash("success","Le paiement a bien été effectué !");
            return $this->redirectToRoute('final_summary');
-           }
        }
 
         return $this->render('Booking/summary.html.twig', [
@@ -90,15 +88,17 @@ class BookingController extends AbstractController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function finalSummaryAction(Request $request, SessionInterface $session)
+    public function finalSummaryAction(Request $request, BookingManager $bookingManager)
     {
-        $booking = $session->get('booking');
+       // en vrai, on récupère les données présentes en bdd donc utilisation repository
+
+        $booking = $bookingManager->finalSummary($request);
         $tickets = $booking->getTickets();
 
-        return $this->render('Booking/final-summary.html.twig', array(
+        return $this->render('Booking/final-summary.html.twig', [
             'booking'=>$booking,
             'tickets'=>$tickets
-        ));
+        ]);
 
 
     }

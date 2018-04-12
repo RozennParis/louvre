@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rozenn
- * Date: 11/04/18
- * Time: 14:25
- */
-
 namespace AppBundle\Service;
 
 use AppBundle\Entity\Booking;

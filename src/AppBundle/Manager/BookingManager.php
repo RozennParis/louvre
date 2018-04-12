@@ -10,6 +10,7 @@ namespace AppBundle\Manager;
 
 use AppBundle\Entity\Booking;
 use AppBundle\Entity\Ticket;
+use AppBundle\Exception\NoBookingException;
 use AppBundle\Form\BookingType;
 use AppBundle\Form\TicketsType;
 use AppBundle\Service\AgeCalculator;
@@ -27,7 +28,7 @@ class BookingManager extends AbstractController
     /**
      * @var EntityManagerInterface
      */
-    private $doctrine;
+    private $entityManager;
 
     /**
      * @var FormFactoryInterface
@@ -38,45 +39,51 @@ class BookingManager extends AbstractController
      * @var SessionInterface
      */
     private $session;
+    private $tarificator;
+    private $ageCalculator;
+    /**
+     * @var Payment
+     */
+    private $payment;
 
-    public function __construct(EntityManagerInterface $doctrine, FormFactoryInterface $form, SessionInterface $session, Tarificator $tarificator, AgeCalculator $ageCalculator)
+    public function __construct(EntityManagerInterface $em, FormFactoryInterface $form, SessionInterface $session, Tarificator $tarificator, AgeCalculator $ageCalculator, Payment $payment)
     {
-        $this->doctrine = $doctrine;
+        $this->entityManager = $em;
         $this->form = $form;
         $this->session = $session;
         $this->tarificator = $tarificator;
         $this->ageCalculator = $ageCalculator;
+        $this->payment = $payment;
     }
 
-    public function booking(Request $request)
+    public function initBooking()
     {
-        $booking = new Booking();
-        $bookingForm = $this->createForm(BookingType::class, $booking);
+        try {
+            $booking = $this->getBookingFormSession();
+        } catch (NoBookingException $e) {
+            $booking = new Booking();
+        }
 
-        $bookingForm->handleRequest($request);
+        return $booking;
+    }
 
-        if($bookingForm->isSubmitted() && $bookingForm->isValid()) {
-            // préparer le nombre de tickets
-            $count = $booking->getNumberOfTickets();
-            for ($i = 1; $i <= $count; $i++) {
+    public function completeInit(Booking $booking)
+    {
+        while (count($booking->getTickets()) !== $booking->getNumberOfTickets())
+        {
+            if (count($booking->getTickets()) > $booking->getNumberOfTickets()) {
+                $booking->removeTicket($booking->getTickets()->last());
+            } else {
                 $booking->addTicket(new Ticket());
             }
-            //sauvegarder en session booking
-            $this->get('session')->set('booking',$booking);
-
         }
-        return $bookingForm;
     }
+
 
     public function ticket(Request $request)
     {
 
-        $booking = $this->get('session')->get('booking'); //gérer le cas où pas de booking
-
-        if (!$booking)
-        {
-            throw $this->createNotFoundException("La commande n'a pas été initialisée");
-        }
+        $booking = $this->getBookingFormSession();
 
         $ticketForm = $this->createForm(TicketsType::class, $booking);
         $ticketForm->handleRequest($request);
@@ -95,10 +102,53 @@ class BookingManager extends AbstractController
 
                 $totalPrice += $ticket->getPrice();
             }
-
             $booking->setTotalPrice($totalPrice);
             $this->get('session')->set('booking', $booking);
         }
         return $ticketForm;
+    }
+
+
+    public function summary(Request $request)
+    {
+        $booking = $this->session->get('booking');
+
+        $tickets = $booking->getTickets();
+
+        if ($request->getMethod() === Request::METHOD_POST)
+        {
+            $transactionId = $this->payment->payment($booking, $request->request->get('stripeToken'));
+            if (false !== $transactionId)
+            {
+                $this->entityManager->persist($booking);
+                $this->entityManager->flush();
+
+                //si ok >>> envoi mail
+                // vide la session en gardant $id de coté
+                //$this->addFlash("success","Le paiement a bien été effectué !");
+            }
+        }
+        return $booking;
+    }
+
+    public function finalSummary(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        // récupération de $id pour accéder aux données $booking en bdd
+        $booking = $em->getRepository('AppBundle:Booking')->getBookingWithTickets($id);
+        return $booking;
+    }
+
+    /**
+     * @return mixed
+     */
+    private function getBookingFormSession()
+    {
+        $booking = $this->get('session')->get('booking'); //gérer le cas où pas de booking
+
+        if (!$booking) {
+            throw new NoBookingException();
+        }
+        return $booking;
     }
 }
