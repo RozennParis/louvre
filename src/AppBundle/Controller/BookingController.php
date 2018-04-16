@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Form\BookingType;
+use AppBundle\Form\TicketsType;
 use AppBundle\Manager\BookingManager;
 use AppBundle\Service\Payment;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -29,6 +30,8 @@ class BookingController extends AbstractController
         if($form->isSubmitted() && $form->isValid())
         {
             $bookingManager->completeInit($booking);
+            $bookingManager->setBookingSession($booking);
+
             return $this->redirectToRoute('ticket');
         }
 
@@ -45,11 +48,16 @@ class BookingController extends AbstractController
      */
     public function ticketAction(Request $request, BookingManager $bookingManager)
     {
-        $form = $bookingManager->ticket($request);
+        $booking = $bookingManager->initBooking();
+
+        $form = $this->createForm(TicketsType::class, $booking);
+        $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
-            //go to step3
+            $bookingManager->getTicketPrice($booking);
+            $bookingManager->setBookingSession($booking);
+
             return $this->redirectToRoute('summary');
         }
 
@@ -66,12 +74,20 @@ class BookingController extends AbstractController
      */
     public function summaryAction(Request $request, BookingManager $bookingManager)
     {
-        $booking = $bookingManager->summary($request);
-        $tickets = $booking->getTickets();
+        $booking = $bookingManager->initBooking();
+        $tickets = $bookingManager->getTicketsFromSession($booking);
+
 
        if ($request->getMethod() === Request::METHOD_POST)
        {
-           return $this->redirectToRoute('final_summary');
+           $bookingManager->getBookingSummary($request, $booking);
+           $id = $bookingManager->recoverBookingId($booking);
+
+           $bookingManager->clearSession();
+
+           return $this->redirectToRoute('final_summary', [
+               'id'=> $id
+           ]);
        }
 
         return $this->render('Booking/summary.html.twig', [
@@ -83,16 +99,14 @@ class BookingController extends AbstractController
 
 
     /**
-     * @Route("/final-summary", name="final_summary")
+     * @Route("/final-summary/{id}", name="final_summary")
      * @Method({"GET", "POST"}) //enlever le GET, juste pour tester au rafraichissement de la page
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function finalSummaryAction(Request $request, BookingManager $bookingManager)
+    public function finalSummaryAction(BookingManager $bookingManager, $id)
     {
-       // en vrai, on récupère les données présentes en bdd donc utilisation repository
-
-        $booking = $bookingManager->finalSummary($request);
+        $booking = $bookingManager->getFinalSummary($id);
         $tickets = $booking->getTickets();
 
         return $this->render('Booking/final-summary.html.twig', [

@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class BookingRepository extends EntityRepository
 {
-    public function getBookingWithTickets($id)
+    public function getClientBooking($id)
     {
 
         $qb = $this

@@ -31,25 +31,27 @@ class BookingManager extends AbstractController
     private $entityManager;
 
     /**
-     * @var FormFactoryInterface
-     */
-    private $form;
-
-    /**
      * @var SessionInterface
      */
     private $session;
+
+    /**
+     * @var Tarificator
+     */
     private $tarificator;
+
+    /**
+     * @var AgeCalculator
+     */
     private $ageCalculator;
     /**
      * @var Payment
      */
     private $payment;
 
-    public function __construct(EntityManagerInterface $em, FormFactoryInterface $form, SessionInterface $session, Tarificator $tarificator, AgeCalculator $ageCalculator, Payment $payment)
+    public function __construct(EntityManagerInterface $em, SessionInterface $session, Tarificator $tarificator, AgeCalculator $ageCalculator, Payment $payment)
     {
         $this->entityManager = $em;
-        $this->form = $form;
         $this->session = $session;
         $this->tarificator = $tarificator;
         $this->ageCalculator = $ageCalculator;
@@ -59,7 +61,7 @@ class BookingManager extends AbstractController
     public function initBooking()
     {
         try {
-            $booking = $this->getBookingFormSession();
+            $booking = $this->getBookingFromSession();
         } catch (NoBookingException $e) {
             $booking = new Booking();
         }
@@ -80,75 +82,88 @@ class BookingManager extends AbstractController
     }
 
 
-    public function ticket(Request $request)
+    public function getTicketPrice(Booking $booking)
     {
-
-        $booking = $this->getBookingFormSession();
-
-        $ticketForm = $this->createForm(TicketsType::class, $booking);
-        $ticketForm->handleRequest($request);
-
-        if($ticketForm->isSubmitted() && $ticketForm->isValid()) {
-            //ticket price and total price
-            $tickets = $booking->getTickets();
-
-            $totalPrice = 0;
-            foreach ($tickets as $ticket) {
-                $age = $this->ageCalculator->ageCalcul($booking->getVisitDate(), $ticket->getBirthdate());
-                $ticket->setAge($age);
-
-                $price = $this->tarificator->priceOfTicket($ticket->getReduceRate(), $ticket->getAge());
-                $ticket->setPrice($price);
-
-                $totalPrice += $ticket->getPrice();
-            }
-            $booking->setTotalPrice($totalPrice);
-            $this->get('session')->set('booking', $booking);
-        }
-        return $ticketForm;
-    }
-
-
-    public function summary(Request $request)
-    {
-        $booking = $this->session->get('booking');
-
         $tickets = $booking->getTickets();
+        $totalPrice = 0;
 
-        if ($request->getMethod() === Request::METHOD_POST)
-        {
-            $transactionId = $this->payment->payment($booking, $request->request->get('stripeToken'));
-            if (false !== $transactionId)
-            {
-                $this->entityManager->persist($booking);
-                $this->entityManager->flush();
+        foreach ($tickets as $ticket) {
+            $age = $this->ageCalculator->ageCalcul($booking->getVisitDate(), $ticket->getBirthdate());
+            $ticket->setAge($age);
 
-                //si ok >>> envoi mail
-                // vide la session en gardant $id de coté
-                //$this->addFlash("success","Le paiement a bien été effectué !");
-            }
+            $price = $this->tarificator->priceOfTicket($ticket->getReduceRate(), $ticket->getAge());
+            $ticket->setPrice($price);
+
+            $totalPrice += $ticket->getPrice();
         }
+        $booking->setTotalPrice($totalPrice);
+
         return $booking;
     }
 
-    public function finalSummary(Request $request)
+
+    public function getBookingSummary(Request $request, Booking $booking)
     {
-        $em = $this->getDoctrine()->getManager();
-        // récupération de $id pour accéder aux données $booking en bdd
-        $booking = $em->getRepository('AppBundle:Booking')->getBookingWithTickets($id);
+        $transactionId = $this->payment->payment($booking, $request->request->get('stripeToken'));
+        if (false !== $transactionId) {
+            $this->entityManager->persist($booking);
+            $this->entityManager->flush();
+        }
+        return $booking;
+            /*si ok >>> envoi mail >> if (false !== mailer)
+             {
+              mettre ici le code pour vider la session
+                }*/
+
+            // vide la session
+
+                //$this->addFlash("success","Le paiement a bien été effectué !");
+
+    }
+
+    public function sendMail()
+    {
+
+    }
+
+    public function getFinalSummary($id)
+    {
+        $booking = $this->entityManager->getRepository('AppBundle:Booking')->getClientBooking($id);
         return $booking;
     }
 
     /**
      * @return mixed
      */
-    private function getBookingFormSession()
+    private function getBookingFromSession()
     {
-        $booking = $this->get('session')->get('booking'); //gérer le cas où pas de booking
+        $booking = $this->session->get('booking'); //gérer le cas où pas de booking
 
         if (!$booking) {
             throw new NoBookingException();
         }
         return $booking;
+    }
+
+    public function clearSession()
+    {
+        $this->session->clear();
+    }
+
+    public function recoverBookingId(Booking $booking)
+    {
+        $id = $this->session->get('booking')->getId();
+        return $id;
+    }
+
+    public function setBookingSession(Booking $booking)
+    {
+        $this->session->set('booking', $booking);
+    }
+
+    public function getTicketsFromSession(Booking $booking)
+    {
+        $tickets = $booking->getTickets();
+        return $tickets;
     }
 }
