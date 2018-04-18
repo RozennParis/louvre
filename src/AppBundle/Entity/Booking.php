@@ -74,7 +74,15 @@ class Booking
      */
     private $tickets;
 
+    /**
+     * @var string
+     * @ORM\Column(name="transactionId", type="string")
+     */
+    private $transactionId;
 
+    /**
+     * Booking constructor.
+     */
     public function __construct()
     {
         $this->bookingDate = new \DateTime();
@@ -263,5 +271,29 @@ class Booking
     public function getTickets()
     {
         return $this->tickets;
+    }
+
+    /**
+     * Set transactionId
+     *
+     * @param string $transactionId
+     *
+     * @return Booking
+     */
+    public function setTransactionId($transactionId)
+    {
+        $this->transactionId = $transactionId;
+
+        return $this;
+    }
+
+    /**
+     * Get transactionId
+     *
+     * @return string
+     */
+    public function getTransactionId()
+    {
+        return $this->transactionId;
     }
 }

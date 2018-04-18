@@ -91,7 +91,7 @@ class BookingManager extends AbstractController
             $age = $this->ageCalculator->ageCalcul($booking->getVisitDate(), $ticket->getBirthdate());
             $ticket->setAge($age);
 
-            $price = $this->tarificator->priceOfTicket($ticket->getReduceRate(), $ticket->getAge());
+            $price = $this->tarificator->priceOfTicket($ticket->getReduceRate(), $ticket->getAge(), $booking->getTypeOfTicket());
             $ticket->setPrice($price);
 
             $totalPrice += $ticket->getPrice();
@@ -106,24 +106,11 @@ class BookingManager extends AbstractController
     {
         $transactionId = $this->payment->payment($booking, $request->request->get('stripeToken'));
         if (false !== $transactionId) {
+            $booking->setTransactionId($transactionId);
             $this->entityManager->persist($booking);
             $this->entityManager->flush();
         }
         return $booking;
-            /*si ok >>> envoi mail >> if (false !== mailer)
-             {
-              mettre ici le code pour vider la session
-                }*/
-
-            // vide la session
-
-                //$this->addFlash("success","Le paiement a bien été effectué !");
-
-    }
-
-    public function sendMail()
-    {
-
     }
 
     public function getFinalSummary($id)

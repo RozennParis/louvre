@@ -33,3 +33,7 @@ services:
          arguments:
              $secretKey: '%stripe_private_key%'
 
+    AppBundle\Service\MailerService:
+        tags: ['mailer.service']
+
+

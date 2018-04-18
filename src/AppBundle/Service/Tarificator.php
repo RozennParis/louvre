@@ -18,9 +18,10 @@ class Tarificator
     const CHILD_PRICE = 8;
     const SENIOR_PRICE = 12;
     const REDUCE_PRICE = 10;
+    private $price;
 
 
-    public function priceOfTicket($reduceRate,$age)
+    public function priceOfTicket($reduceRate,$age, $typeOfTicket)
     {
         if (!$reduceRate) {
             switch ($age) {
@@ -40,6 +41,11 @@ class Tarificator
         }
         else {
             $price = self::REDUCE_PRICE;
+        }
+
+        if ($typeOfTicket === false )
+        {
+            $price = $price/2;
         }
         return $price;
     }

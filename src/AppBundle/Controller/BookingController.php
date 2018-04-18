@@ -6,6 +6,7 @@ use AppBundle\Form\BookingType;
 use AppBundle\Form\TicketsType;
 use AppBundle\Manager\BookingManager;
 use AppBundle\Service\Payment;
+use AppBundle\Service\MailerService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -83,13 +84,21 @@ class BookingController extends AbstractController
            $bookingManager->getBookingSummary($request, $booking);
            $id = $bookingManager->recoverBookingId($booking);
 
-           $bookingManager->clearSession();
+           if (isset($id) && $id !== null)
+           {
+               $bookingManager->sendMail($booking);
+           }
 
+           if (false !== $result)
+            {
+             $bookingManager->clearSession();
+            }
+
+            //$this->addFlash("success","Le paiement a bien été effectué !");
            return $this->redirectToRoute('final_summary', [
                'id'=> $id
            ]);
        }
-
         return $this->render('Booking/summary.html.twig', [
             'booking'=>$booking,
             'tickets'=>$tickets

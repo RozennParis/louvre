@@ -1,0 +1,52 @@
+<!--
+- nom + logo du musée
+- date de réservation >>> booking
+- le tarif >>> booking
+- nom de chaque visiteur >>> ticket
+- code de la réservation >>> booking >>> rajouter un champ en bdd
+*/-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta description="">
+    <title>{% block title %}Billetterie Louvre{% endblock %}</title>
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+    <img src="{{ asset('images/logo-louvre.jpg') }}" alt="logo du Louvre">
+    <h2>Billetterie du Louvre</h2>
+
+    <h3> Commande n° {{ booking.transactionId }} du {{ booking.bookingDate }}</h3>
+
+    <div>
+        <p>Prix total de la réservation : {{ booking.totalPrice }}</p>
+    </div>
+
+    <div>
+       <div>
+           {% for ticket in tickets %}
+               <table>
+                   <tr>
+                       <th>Nom</th>
+                       <th>Prénom</th>
+                       <th>Prix unitaire en €</th>
+                   </tr>
+
+                   <tr>
+                       <td>{{ ticket.firstName }}</td>
+                       <td>{{ ticket.lastName }}</td>
+                       <td>{{ ticket.price }}</td>
+                   </tr>
+               </table>
+           {%  endfor %}
+       </div>
+
+    </div>
+    {% block stylesheets %}{% endblock %}
+</body>
+</html>
+
+
