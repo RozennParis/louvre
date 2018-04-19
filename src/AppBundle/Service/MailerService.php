@@ -10,11 +10,12 @@ namespace AppBundle\Service;
 
 use Swift_Mailer;
 use Swift_Message;
+use Swift_Image;
 use Twig_Environment;
 use AppBundle\Entity\Booking;
 
 
-class MailerService extends Swift_Message
+class MailerService
 {
     private $mailer;
     private $twig;
@@ -28,19 +29,27 @@ class MailerService extends Swift_Message
     public function sendMail(Booking $booking)
     {
         $message = (new Swift_Message())
+            ->setDate('n')
             ->setSubject('Votre commande de billets d\'entrée pour le Louvre ')
             ->setFrom('rozenn.paris@gmail.com')
-            ->setTo($booking->getEmail())
+            ->setTo($booking->getEmail());
+
+        $louvreLogo = $message->embed(Swift_image::fromPath('images/logo-louvre.jpg'));
+
+        $message
             ->setBody(
                 $this->twig->render(
                     'Booking/bookingEmail.html.twig', [
                         'booking'=> $booking,
-                        'tickets'=> $booking->getTickets()
+                        'tickets'=> $booking->getTickets(),
+                        'louvreLogo'=>$louvreLogo
                     ]
-                )
+                ),
+                'text/html',
+                'UTF-8'
             );
 
-        $result = $this->mailer->send($message);
+        $this->mailer->send($message);
     }
 
 

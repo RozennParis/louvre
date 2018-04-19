@@ -14,6 +14,7 @@ use AppBundle\Exception\NoBookingException;
 use AppBundle\Form\BookingType;
 use AppBundle\Form\TicketsType;
 use AppBundle\Service\AgeCalculator;
+use AppBundle\Service\MailerService;
 use AppBundle\Service\Tarificator;
 use AppBundle\Service\Payment;
 use Doctrine\ORM\EntityManagerInterface;
@@ -49,13 +50,21 @@ class BookingManager extends AbstractController
      */
     private $payment;
 
-    public function __construct(EntityManagerInterface $em, SessionInterface $session, Tarificator $tarificator, AgeCalculator $ageCalculator, Payment $payment)
+    /**
+     * @var MailerService
+     */
+    private $mailerService;
+
+
+
+    public function __construct(EntityManagerInterface $em, SessionInterface $session, Tarificator $tarificator, AgeCalculator $ageCalculator, Payment $payment, MailerService $mailerService)
     {
         $this->entityManager = $em;
         $this->session = $session;
         $this->tarificator = $tarificator;
         $this->ageCalculator = $ageCalculator;
         $this->payment = $payment;
+        $this->mailerService = $mailerService;
     }
 
     public function initBooking()
@@ -102,27 +111,24 @@ class BookingManager extends AbstractController
     }
 
 
-    public function getBookingSummary(Request $request, Booking $booking)
+    public function doPayment(Request $request, Booking $booking)
     {
         $transactionId = $this->payment->payment($booking, $request->request->get('stripeToken'));
         if (false !== $transactionId) {
             $booking->setTransactionId($transactionId);
             $this->entityManager->persist($booking);
             $this->entityManager->flush();
-        }
-        return $booking;
-    }
 
-    public function getFinalSummary($id)
-    {
-        $booking = $this->entityManager->getRepository('AppBundle:Booking')->getClientBooking($id);
-        return $booking;
+            $this->mailerService->sendMail($booking);;
+        }
+
+        return $transactionId;
     }
 
     /**
      * @return mixed
      */
-    private function getBookingFromSession()
+    public function getBookingFromSession()
     {
         $booking = $this->session->get('booking'); //gérer le cas où pas de booking
 
@@ -148,9 +154,4 @@ class BookingManager extends AbstractController
         $this->session->set('booking', $booking);
     }
 
-    public function getTicketsFromSession(Booking $booking)
-    {
-        $tickets = $booking->getTickets();
-        return $tickets;
-    }
 }

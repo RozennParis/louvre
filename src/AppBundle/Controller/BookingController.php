@@ -49,7 +49,7 @@ class BookingController extends AbstractController
      */
     public function ticketAction(Request $request, BookingManager $bookingManager)
     {
-        $booking = $bookingManager->initBooking();
+        $booking = $bookingManager->getBookingFromSession();
 
         $form = $this->createForm(TicketsType::class, $booking);
         $form->handleRequest($request);
@@ -75,33 +75,21 @@ class BookingController extends AbstractController
      */
     public function summaryAction(Request $request, BookingManager $bookingManager)
     {
-        $booking = $bookingManager->initBooking();
-        $tickets = $bookingManager->getTicketsFromSession($booking);
+        $booking = $bookingManager->getBookingFromSession();
 
 
        if ($request->getMethod() === Request::METHOD_POST)
        {
-           $bookingManager->getBookingSummary($request, $booking);
-           $id = $bookingManager->recoverBookingId($booking);
-
-           if (isset($id) && $id !== null)
-           {
-               $bookingManager->sendMail($booking);
+           if($bookingManager->doPayment($request, $booking)){
+               //$this->addFlash("success","Le paiement a bien été effectué !");
+               return $this->redirectToRoute('final_summary', [
+                   'id'=> $booking->getId()
+               ]);
            }
 
-           if (false !== $result)
-            {
-             $bookingManager->clearSession();
-            }
-
-            //$this->addFlash("success","Le paiement a bien été effectué !");
-           return $this->redirectToRoute('final_summary', [
-               'id'=> $id
-           ]);
        }
         return $this->render('Booking/summary.html.twig', [
-            'booking'=>$booking,
-            'tickets'=>$tickets
+            'booking'=>$booking
         ]);
     }
 
@@ -113,14 +101,14 @@ class BookingController extends AbstractController
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function finalSummaryAction(BookingManager $bookingManager, $id)
+    public function finalSummaryAction(BookingManager $bookingManager)
     {
-        $booking = $bookingManager->getFinalSummary($id);
-        $tickets = $booking->getTickets();
+        $booking = $bookingManager->getBookingFromSession();
+        $bookingManager->clearSession();
+
 
         return $this->render('Booking/final-summary.html.twig', [
             'booking'=>$booking,
-            'tickets'=>$tickets
         ]);
 
 
