@@ -47,9 +47,12 @@ class BookingType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => Booking::class
-        ));
+        $resolver->setDefaults([
+            'data_class' => Booking::class,
+            'validation_groups' => [
+                'stepOne'
+            ]
+        ]);
     }
 
 }

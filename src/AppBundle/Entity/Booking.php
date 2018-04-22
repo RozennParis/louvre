@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Validator\Constraints as AppAssert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -49,8 +50,10 @@ class Booking
     private $typeOfTicket = self::TYPE_OF_TICKET_DAY;
 
     /**
-     * @var \DateTime
+     * @var \DateTime $visitDate
      * @Assert\Date()
+     * @Assert\GreaterThanOrEqual("today", groups={"stepOne"})
+     * @AppAssert\NotTuesday(groups={"stepOne"})
      * @ORM\Column(name="visitDate", type="datetime")
      */
     private $visitDate;
@@ -70,6 +73,7 @@ class Booking
     private $totalPrice;
 
     /**
+     * @Assert\Valid(groups={"stepTwo"})
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ticket", mappedBy="booking", cascade={"persist"})
      */
     private $tickets;

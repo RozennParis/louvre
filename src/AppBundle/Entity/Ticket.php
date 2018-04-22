@@ -40,6 +40,7 @@ class Ticket
     /**
      * @var \DateTime
      * @Assert\Date()
+     * @Assert\LessThanOrEqual("today", groups={"stepTwo"})
      * @ORM\Column(name="birthDate", type="datetime")
      */
     private $birthDate;
