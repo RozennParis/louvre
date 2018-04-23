@@ -1,16 +1,19 @@
 <?php
 
+
 namespace AppBundle\Validator\Constraints;
 
 
 use Symfony\Component\Validator\Constraint;
 
+
 /**
- * Class NotTuesday
+ * Class NotSunday
  * @package AppBundle\Validator\Constraints
  * @Annotation
  */
- class NotTuesday extends Constraint
+class NotSunday extends Constraint
 {
-    public $message = 'Le musée est fermé le mardi';
+    public $message = 'La réservation n\'est pas disponible le dimanche';
 }
+
