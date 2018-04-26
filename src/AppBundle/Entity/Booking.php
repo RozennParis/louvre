@@ -12,7 +12,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="booking")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\BookingRepository")
- * @AppAssert\halfDay(groups={"stepOne"}
+ * @AppAssert\halfDay(groups={"stepOne"})
+ * @AppAssert\NotMoreThousand(groups={"stepOne"})
  */
 class Booking
 {

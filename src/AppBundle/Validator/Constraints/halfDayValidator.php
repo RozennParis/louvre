@@ -18,15 +18,12 @@ class halfDayValidator extends ConstraintValidator
    public function validate($booking, Constraint $constraint)
     {
 
-       if ($booking->getVisitDate()->format('Y-m-d') === $booking->getBookingDate()->format('Y-m-d'))
+       if ($booking->getVisitDate()->format('Y-m-d') === date('Y-m-d') && date('H') >= 14)
         {
-            /*if($booking->getBookingDate->format('H:i:s') >= time())
-            {
-                $typeOfTicket = self::TYPE_OF_TICKET_HALFDAY;*/
-                $this->context->buildViolation($constraint->message)
-                    ->atPath('TicketType')
-                    ->addViolation();
-            //}
+            $booking->setTypeOfTicket(false);
+            $this->context->buildViolation($constraint->message)
+                ->atPath('TypeOfTicket')
+                ->addViolation();
         }
     }
 

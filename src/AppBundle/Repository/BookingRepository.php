@@ -26,4 +26,21 @@ class BookingRepository extends EntityRepository
             ->getQuery()
             ->getSingleResult();
     }
+
+    public function getNumberOfTicketPerDay($visitDate)
+    {
+        $qb = $this
+            ->createQueryBuilder('b')
+            ->innerJoin('b.tickets', 't')
+            ->addSelect('t')
+            ->select('COUNT(t.id)')
+            ->where('b.visitDate = :visitDate')
+            ->setParameter('visitDate', $visitDate)
+        ;
+
+        return $qb
+            ->getQuery()
+            ->getSingleScalarResult();
+
+    }
 }

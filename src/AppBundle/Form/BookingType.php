@@ -38,7 +38,8 @@ class BookingType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Adresse mail '
             ])
-            ->add('save', SubmitType::class);
+            ->add('Valider', SubmitType::class)
+        ;
 
     }
 
