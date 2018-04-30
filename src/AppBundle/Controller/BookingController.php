@@ -113,6 +113,26 @@ class BookingController extends AbstractController
 
 
     }
+
+    /**
+    * @Route("/sale", name="sale")
+    * @Method({"GET"})
+    */
+    public function saleAction()
+    {
+        return $this->render('StaticViews/general-terms-of-sale.html.twig');
+    }
+
+    /**
+     * @Route("/news", name="news")
+     * @Method({"GET"})
+     */
+    public function newsAction()
+    {
+        return $this->render('StaticViews/practical-news.html.twig');
+    }
+
+
 }
 
 

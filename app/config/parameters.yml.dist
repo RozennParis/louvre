@@ -12,7 +12,7 @@ parameters:
 
     mailer_transport: ~
     mailer_host: ~
-    mailer_port:~
+    mailer_port: ~
     mailer_user: ~
     mailer_password: ~
 

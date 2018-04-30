@@ -4,28 +4,68 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta description="">
-        <title>{% block title %}Billetterie Louvre{% endblock %}</title>
+        <title>{% block title %}{{ 'head.main_title'|trans }}{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         <nav role="navigation">
             <ul>
-                <li>Langue</li>
-                <li><a href="https://www.louvre.fr/">Le Louvre</a></li>
+                <li>{{ 'header.label.language'|trans }}</li>
+                <li><a href="https://www.louvre.fr/">{{ 'header.label.museum'|trans }}</a></li>
             </ul>
         </nav>
+
         <header>
             <div>
                 <img src="{{ asset('images/logo-louvre.jpg') }}" alt="logo du Louvre">
-                <h1>Billetterie officielle</h1>
+                <h1>{% block headerTitle %} {{ 'body.main.title'|trans }} {% endblock %}</h1>
             </div>
+            {% block headerImg %}
             <div>
                 <img src="{{ asset('images/architecture-1868312_1280.jpg') }}" alt="photo louvre de nuit">
             </div>
+            {% endblock %}
         </header>
 
-        {% block body %}{% endblock %}
+        <div>
+        {% block body %}
+        {% endblock %}
+        </div>
+
+            <div class="">
+                <h3>{{ 'practical_news.opening_hours'|trans }}</h3>
+                <ul>
+                    <li>{{ 'practical_news.monday'|trans }} : 9h00 - 18h00 </li>
+                    <li>{{ 'practical_news.tuesday'|trans }} : {{ 'practical_news.closed.day'|trans }} </li>
+                    <li>{{ 'practical_news.wednesday'|trans }} : 9h00 - 21h45 </li>
+                    <li>{{ 'practical_news.thursday'|trans }} : 9h00 - 18h00 </li>
+                    <li>{{ 'practical_news.friday'|trans }} : 9h00 - 21h45 </li>
+                    <li>{{ 'practical_news.saturday'|trans }} : 9h00 - 18h00 </li>
+                    <li>{{ 'practical_news.sunday'|trans }} : 9h00 - 18h00 </li>
+                    <li>{{ 'practical_news.holidays'|trans }} : 9h00- 18h00</li>
+                </ul>
+
+                <h4>{{ 'practical_news.closed.days'|trans }}</h4>
+                <ul>
+                    <li>{{ 'practical_news.new_year'|trans }}</li>
+                    <li>{{ 'practical_news.may_first'|trans }}</li>
+                    <li>{{ 'practical_news.november_first'|trans }}</li>
+                    <li>{{ 'practical_news.christmas'|trans }}</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>{{ 'cgv.rates'|trans }}</h3>
+                <ul>
+                    <li>{{ 'practical_news.rates.adult'|trans }} : 16€ </li>
+                    <li>{{ 'practical_news.rates.child'|trans }} : 8€ </li>
+                    <li>{{ 'practical_news.rates.under_four'|trans }} : 0€ </li>
+                    <li>{{ 'practical_news.rates.senior'|trans }} : 12€ </li>
+                    <li>{{ 'ticket.reduce_rate'|trans }}* : 10€ </li>
+                </ul>
+                <p>*{{ 'practical_news.reduce_rate'|trans }}</p>
+            </div>
         {% block javascripts %}{% endblock %}
 
         <footer>
@@ -35,11 +75,9 @@
                 <hr/>
             </div>
             <div>
-                <a href="">Contact</a>
-                <a href="">Infos pratiques</a>
+                <a href="../web/app_dev.php/news">{{ 'practical_informations'|trans }}</a>
                 logos réseaux sociaux
-                <a href="">Mentions légales</a>
-                <a href="">CGV</a>
+                <a href="../web/app_dev.php/sale">{{ 'general_terms_of_sale'|trans }}</a>
             </div>
 
 

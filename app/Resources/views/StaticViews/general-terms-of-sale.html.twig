@@ -1,0 +1,170 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{parent()}} - {{ 'general_terms_of_sale'|trans }}
+{% endblock %}
+
+{% block header %}
+    {% block headerTitle %}{{ 'general_terms_of_sale.title'|trans }}{% endblock %}
+{% endblock %}
+
+{% block headerImg %}
+{% endblock %}
+
+{% block body %}
+    <main class="container">
+        <div class="row">
+            <div class="">
+                <ul>
+                    <li>Article 1 : {{ 'cgv.objet'|trans }} </li>
+                    <li>Article 2 : {{ 'cgv.application'|trans }} </li>
+                    <li>Article 3 : {{ 'cgv.tickets_presentation'|trans }} </li>
+                    <li>Article 4 : {{ 'cgv.utilisation_conditions'|trans }} </li>
+                    <li>Article 5 : {{ 'cgv.using_modalities'|trans }} </li>
+                    <li>Article 6 : {{ 'cgv.rates'|trans }} </li>
+                    <li>Article 7 : {{ 'cgv.payment_modalities'|trans }} </li>
+                    <li>Article 8 : {{ 'cgv.payment_security'|trans }} </li>
+                    <li>Article 9 : {{ 'cgv.personal_data_processing'|trans }} </li>
+                    <li>Article 10 : {{ 'cgv.cookies'|trans }} </li>
+                    <li>Article 11 : {{ 'cgv.refund_application'|trans }} </li>
+                    <li>Article 12 : {{ 'cgv.contesting_bank_debit'|trans }} </li>
+                    <li>Article 13 : {{ 'cgv.responsability'|trans }} </li>
+                    <li>Article 14 : {{ 'cgv.law'|trans }} </li>
+                </ul>
+            </div>
+
+            <div>
+                <div>
+                    <h3>1 - {{ 'cgv.objet'|trans }} </h3>
+
+                    <p>1.1 - {{ 'cgv.paragraph.first.one'|trans }}</p>
+                    <p>1.2 - {{ 'cgv.paragraph.first.two'|trans }}</p>
+                    <p>1.3 - {{ 'cgv.paragraph.first.three'|trans }}</p>
+                </div>
+                <div>
+                    <h3>2 - {{ 'cgv.application'|trans }} </h3>
+
+                    <p>2.1 - {{ 'cgv.paragraph.second.one'|trans }}</p>
+                    <p>2.2 - {{ 'cgv.paragraph.second.two'|trans }}</p>
+                    <p>2.3 	{{ 'cgv.paragraph.second.three'|trans }}
+                    </p>
+                </div>
+
+                <div>
+                    <h3>3 - {{ 'cgv.tickets_presentation'|trans }} </h3>
+
+                    <p>3.1 - {{ 'cgv.paragraph.third.one'|trans }}</p>
+                    <p>3.2 - {{ 'cgv.paragraph.third.two'|trans }}</p>
+                    <p>3.3 	{{ 'cgv.paragraph.third.three'|trans }}</p>
+                </div>
+
+                <div>
+                    <h3>4 - {{ 'cgv.utilisation_conditions'|trans }} </h3>
+
+                    <h5>4.1 - Les billets</h5>
+
+                    <p>4.1.1 - {{ 'cgv.paragraph.fourth.one.one'|trans }}</p>
+                    <p>4.1.2 - {{ 'cgv.paragraph.fourth.one.two'|trans }}</p>
+                    <p>4.1.3 - {{ 'cgv.paragraph.fourth.one.three'|trans }}</p>
+                    <p>4.1.4 - {{ 'cgv.paragraph.fourth.one.four'|trans }}</p>
+                    <p>4.1.5 - {{ 'cgv.paragraph.fourth.one.five'|trans }}</p>
+                    <p>4.1.6 - {{ 'cgv.paragraph.fourth.one.six'|trans }}</p>
+                    <p>4.1.7 - {{ 'cgv.paragraph.fourth.one.seven'|trans }}</p>
+                    <p>4.1.8 - {{ 'cgv.paragraph.fourth.one.eight'|trans }}</p>
+                    <p>4.1.9 - {{ 'cgv.paragraph.fourth.one.nine'|trans }}</p>
+                    <p>4.1.10 	{{ 'cgv.paragraph.fourth.one.ten'|trans }}</p>
+
+                    <h5>4.2 - Mesures de sécurité</h5>
+
+                    <p>4.2.1 - {{ 'cgv.paragraph.fourth.two.one'|trans }}</p>
+                    <p>4.2.2 - {{ 'cgv.paragraph.fourth.two.two'|trans }}</p>
+                </div>
+                <div>
+                    <h3>5 - {{ 'cgv.using_modalities'|trans }} </h3>
+
+                    <p>5.1 - {{ 'cgv.paragraph.fifth.one'|trans }}</p>
+                    <p>5.2 	{{ 'cgv.paragraph.fifth.two'|trans }}</p>
+                    <p>5.3 	{{ 'cgv.paragraph.fifth.three'|trans }}</p>
+                    <p>5.4 	{{ 'cgv.paragraph.fifth.four'|trans }}</p>
+                    <p>5.5 	{{ 'cgv.paragraph.fifth.five'|trans }}</p>
+                </div>
+
+                <div>
+                    <h3>6 - {{ 'cgv.rates'|trans }} </h3>
+
+                    <p>6.1 - {{ 'cgv.paragraph.sixth.one'|trans }}</p>
+                    <p>6.2 	{{ 'cgv.paragraph.sixth.two'|trans }}</p>
+                    <p>6.3 	{{ 'cgv.paragraph.sixth.three'|trans }}</p>
+                    <p>6.4 	{{ 'cgv.paragraph.sixth.four'|trans }}</p>
+                </div>
+
+                <div>
+                    <h3>7 - {{ 'cgv.payment_modalities'|trans }} </h3>
+
+                    <p>7.1 - {{ 'cgv.paragraph.seventh.one'|trans }}</p>
+                    <p>7.2 	{{ 'cgv.paragraph.seventh.two'|trans }}</p>
+                    <p>7.3 	{{ 'cgv.paragraph.seventh.three'|trans }}</p>
+                    <p>7.4 	{{ 'cgv.paragraph.seventh.four'|trans }}</p>
+                </div>
+
+                <div>
+                    <h3>8 - {{ 'cgv.payment_security'|trans }} </h3>
+
+                    <p>8.1 - {{ 'cgv.paragraph.eighth.one'|trans }}</p>
+
+                    <p>8.2 	{{ 'cgv.paragraph.eighth.two'|trans }}</p>
+                </div>
+
+                <div>
+                    <h3>9 - {{ 'cgv.personal_data_processing'|trans }} </h3>
+
+                    <p>9.1 	{{ 'cgv.paragraph.ninth.one'|trans }}</p>
+                    <p>9.2 	{{ 'cgv.paragraph.ninth.two'|trans }}</p>
+                    <p>9.3 	{{ 'cgv.paragraph.ninth.three'|trans }}</p>
+                </div>
+
+                <div>
+                    <h3>10 - {{ 'cgv.cookies'|trans }}</h3>
+
+                    <p>10.1 - {{ 'cgv.paragraph.tenth.one'|trans }}</p>
+                    <p>10.2 - {{ 'cgv.paragraph.tenth.two'|trans }}</p>
+                </div>
+
+                <div>
+                    <h3>11 - {{ 'cgv.refund_application'|trans }} </h3>
+
+                    <p>11.1 - {{ 'cgv.paragraph.eleventh.one'|trans }}</p>
+                    <p>11.2 - {{ 'cgv.paragraph.eleventh.two'|trans }}</p>
+                    <p>11.3 - {{ 'cgv.paragraph.eleventh.three'|trans }}</p>
+                    <p>11.4 - {{ 'cgv.paragraph.eleventh.four'|trans }}</p>
+                    <p>11.5 - {{ 'cgv.paragraph.eleventh.five'|trans }}</p>
+                    <p>11.6 - {{ 'cgv.paragraph.eleventh.six'|trans }}</p>
+                </div>
+
+                <div>
+                    <h3>12 - {{ 'cgv.contesting_banking_debit'|trans }}</h3>
+
+                    <p>12.1 - {{ 'cgv.paragraph.twelfth.one'|trans }}</p>
+                    <p>12.2 - {{ 'cgv.paragraph.twelfth.two'|trans }}</p>
+                </div>
+
+                <div>
+                    <h3>13 - {{ 'cgv.responsability'|trans }} </h3>
+
+                    <p>13.1 - {{ 'cgv.paragraph.thirteenth.one'|trans }}</p>
+                    <p>13.2 - {{ 'cgv.paragraph.thirteenth.two'|trans }}</p>
+                    <p>13.3 - {{ 'cgv.paragraph.thirteenth.three'|trans }}</p>
+                </div>
+
+                <div>
+                    <h3>14 - {{ 'cgv.law'|trans }} </h3>
+                    <p>{{ 'cgv.paragraph.fourteenth'|trans }}</p>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}

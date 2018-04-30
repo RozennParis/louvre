@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class NotMoreThousandValidator extends ConstraintValidator
 {
-    const MAX_TICKET_PER_DAY = 15;
+    const MAX_TICKET_PER_DAY = 20;
     /**
      * @var EntityManagerInterface
      */
@@ -31,7 +31,8 @@ class NotMoreThousandValidator extends ConstraintValidator
         if ($booking->getNumberOfTickets() >= $ticketsLeft)
         {
             $this->context->buildViolation($constraint->message)
-                //->atPath('NumberOfTickets')
+                ->atPath('numberOfTickets')
+                ->setParameter( '{{ ticketsLeft }}', ($ticketsLeft > 0)? $ticketsLeft: 0)
                 ->addViolation();
         }
     }

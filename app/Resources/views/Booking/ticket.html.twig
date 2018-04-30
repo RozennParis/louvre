@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{parent()}} - Etape 2
+    {{parent()}} - {{ 'step_title'|trans }} 2
 {% endblock %}
 
 {% block body %}
     <main class="container">
         <div class="row">
             <div class="">
-                <h2>Etape 2</h2>
+                <h2>{{ 'step_title'|trans }} 2</h2>
             </div>
             <div>
                 <h3>Tickets</h3>
@@ -17,7 +17,7 @@
                 <hr/>
                 {{ form_start(form) }}
                     {{ form_widget(form) }}
-                    <button type="submit" name="ticketValidation">Envoyer</button>
+                    <button type="submit" name="ticketValidation">{{ 'submit.button'|trans }}</button>
                 {{ form_end(form) }}
                 <hr/>
             </div>

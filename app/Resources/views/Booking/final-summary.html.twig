@@ -1,24 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{parent()}} - Etape 4
+    {{parent()}} - {{ 'step_title'|trans }} 4
 {% endblock %}
 
 {% block body %}
     <main class="container">
         <div class="row">
             <div class="">
-                <h2>Etape 4</h2>
+                <h2>{{ 'step_title'|trans }} 4</h2>
             </div>
             <div>
-                <h3>Récapitulatif de la commande n°{{ booking.transactionId }}</h3>
+                <h3>{{ 'booking.summary'|trans }} n°{{ booking.transactionId }}</h3>
             </div>
             <div>
                 <table>
                     <tr>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        <th>Prix unitaire en €</th>
+                        <th>{{ 'ticket.lastname'|trans }}</th>
+                        <th>{{ 'ticket.firstname'|trans }}</th>
+                        <th>{{ 'ticket.unit_price'|trans }}</th>
 
                     </tr>
 
@@ -30,7 +30,7 @@
                         </tr>
                     {%  endfor %}
                     <tr>
-                        <td class="row">Total Commande</td>
+                        <td class="row">{{ 'booking.total_price'|trans }}</td>
                         <td>{{ booking.totalPrice }}</td>
                     </tr>
                 </table>

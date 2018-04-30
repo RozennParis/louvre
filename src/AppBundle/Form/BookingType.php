@@ -21,24 +21,23 @@ class BookingType extends AbstractType
         $builder
             ->add('visitDate', DateType::class, [
                 'widget'=> 'single_text',
-                'label' => 'Jour de visite '
+                'label' => 'booking.visitDate'
             ])
             ->add('typeOfTicket', ChoiceType::class, [
                 'choices' => [
-                    'Journée' => Booking::TYPE_OF_TICKET_DAY,
-                    'Demi-journée' => Booking::TYPE_OF_TICKET_HALFDAY,
+                    'booking.day' => Booking::TYPE_OF_TICKET_DAY,
+                    'booking.half_day' => Booking::TYPE_OF_TICKET_HALFDAY,
                 ],
-                'label'=> 'Type de ticket '
+                'label'=> 'booking.type_of_ticket'
             ])
             ->add('numberOfTickets', ChoiceType::class,[
                 'choices' => array_combine(
                     range(Booking::NB_TICKET_MIN,Booking::NB_TICKET_MAX),
                     range(Booking::NB_TICKET_MIN,Booking::NB_TICKET_MAX)),
-                'label' => 'Nombre de tickets '])
+                'label' => 'booking.number_of_tickets'])
             ->add('email', EmailType::class, [
-                'label' => 'Adresse mail '
+                'label' => 'booking.email'
             ])
-            ->add('Valider', SubmitType::class)
         ;
 
     }

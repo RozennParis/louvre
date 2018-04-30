@@ -12,7 +12,7 @@ namespace AppBundle\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-class halfDayValidator extends ConstraintValidator
+class HalfDayValidator extends ConstraintValidator
 {
 
    public function validate($booking, Constraint $constraint)
@@ -22,7 +22,7 @@ class halfDayValidator extends ConstraintValidator
         {
             $booking->setTypeOfTicket(false);
             $this->context->buildViolation($constraint->message)
-                ->atPath('TypeOfTicket')
+                ->atPath('typeOfTicket')
                 ->addViolation();
         }
     }

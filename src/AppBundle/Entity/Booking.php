@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="booking")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\BookingRepository")
- * @AppAssert\halfDay(groups={"stepOne"})
+ * @AppAssert\HalfDay(groups={"stepOne"})
  * @AppAssert\NotMoreThousand(groups={"stepOne"})
  */
 class Booking
@@ -32,7 +32,7 @@ class Booking
 
     /**
      * @var \DateTime
-     * @Assert\Date()
+     * @Assert\Date(message="validator.date.message")
      * @ORM\Column(name="bookingDate", type="datetime")
      */
     private $bookingDate;

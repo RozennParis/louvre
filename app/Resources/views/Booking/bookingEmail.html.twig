@@ -3,13 +3,13 @@
 
 <body>
     <img src="{{ louvreLogo }}" alt="logo du Louvre">
-    <h2>Billetterie du Louvre</h2>
+    <h2>{{ 'head.main_title'|trans }}</h2>
 
-    <h3> Commande n° {{ booking.transactionId }} du {{ booking.bookingDate|date('d/m/Y') }}</h3>
+    <h3> {{ 'summary'|trans({ '%transactionId%': booking.transactionId }) }} {{ booking.bookingDate|date('d/m/Y') }}</h3>
 
     <div>
-        <p><strong>Prix total de la réservation</strong> : {{ booking.totalPrice }}€</p>
-        <p><strong>Type de ticket</strong> : {{ booking.typeOfTicket }}€</p>
+        <p><strong>{{ 'mail.booking.total_price'|trans }}</strong> : {{ booking.totalPrice }} €</p>
+        <p><strong>{{ 'booking.type_of_ticket'|trans }}</strong> : {{ booking.typeOfTicket }}</p>
     </div>
 
     <div>
@@ -17,9 +17,9 @@
            {% for ticket in tickets %}
                <table>
                    <tr>
-                       <th>Nom</th>
-                       <th>Prénom</th>
-                       <th>Prix unitaire en €</th>
+                       <th>{{ 'ticket.lastname'|trans }}</th>
+                       <th>{{ 'ticket.firstname'|trans }}</th>
+                       <th>{{ 'ticket.unit_price'|trans }}</th>
                    </tr>
 
                    <tr>

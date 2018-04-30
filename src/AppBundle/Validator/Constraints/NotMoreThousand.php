@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class NotMoreThousand extends Constraint
 {
-    public $message = 'Il n\'est plus possible de réserver, le quota a été atteint';
+    public $message = 'validator.not.more.thousand';
 
     public function getTargets()
     {

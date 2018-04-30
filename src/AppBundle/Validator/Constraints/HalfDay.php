@@ -11,9 +11,9 @@ use Symfony\Component\Validator\Constraint;
  * @package AppBundle\Validator\Constraints
  * @Annotation
  */
-class halfDay extends Constraint
+class HalfDay extends Constraint
 {
-    public $message = "il est 14h00 passés, seuls les billets à la demi-journée sont disponibles.";
+    public $message = 'validator.half_day';
 
 
     public function getTargets()

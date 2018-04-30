@@ -31,9 +31,9 @@ class BookingRepository extends EntityRepository
     {
         $qb = $this
             ->createQueryBuilder('b')
-            ->innerJoin('b.tickets', 't')
-            ->addSelect('t')
-            ->select('COUNT(t.id)')
+//            ->innerJoin('b.tickets', 't')
+//            ->addSelect('t')
+            ->select('SUM(b.numberOfTickets)')
             ->where('b.visitDate = :visitDate')
             ->setParameter('visitDate', $visitDate)
         ;

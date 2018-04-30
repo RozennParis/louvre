@@ -1,21 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    {{parent()}} - Etape 1
+    {{parent()}} - {{ 'step_title'|trans }} 1
 {% endblock %}
 
 {% block body %}
    <main class="container">
        <div class="row">
            <div class="">
-               <h2>Etape 1</h2>
+               <h2>{{ 'step_title'|trans }} 1</h2>
            </div>
            <div>
-               <h3>1-Date</h3>
+               <h3>1 - Date</h3>
            </div>
            <div>
                {{ form_start(form) }}
-
+                   {{ form_widget(form) }}
+                   <button type="submit" name="indexValidation">{{ 'submit.button'|trans }}</button>
                {{ form_end(form) }}
 
 
