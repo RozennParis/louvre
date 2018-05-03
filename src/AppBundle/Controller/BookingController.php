@@ -9,11 +9,12 @@ use AppBundle\Service\Payment;
 use AppBundle\Service\MailerService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-class BookingController extends AbstractController
+
+class BookingController extends Controller
 {
     /**
      * @Route("/", name="homepage")
@@ -68,7 +69,7 @@ class BookingController extends AbstractController
     }
 
     /**
-     * @Route(path="/summary", name="summary", schemes={"%secure_channel%"})
+     * @Route(path="/summary", name="summary")
      * @Method({"GET","POST"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -132,6 +133,14 @@ class BookingController extends AbstractController
         return $this->render('StaticViews/practical-news.html.twig');
     }
 
+    /**
+     * @Route("/legal-mentions", name="legal_mentions")
+     * @Method({"GET"})
+     */
+    public function mentionsAction()
+    {
+        return $this->render('StaticViews/legal-mentions.html.twig');
+    }
 
 }
 

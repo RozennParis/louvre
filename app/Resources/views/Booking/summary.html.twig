@@ -40,7 +40,7 @@
                             data-key="{{ stripe_public_key }}"
                             data-description="{{ 'payment.title'|trans }}"
                             data-amount="{{ booking.totalPrice * 100}}"
-                            data-locale="auto"
+                            data-locale="{{ app.request.locale }}"
                             data-currency='eur'
                             data-email='{{ booking.email }}'>
                     </script>

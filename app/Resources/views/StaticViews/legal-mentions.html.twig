@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{parent()}} - {{ 'legal_mentions.title'|trans }}
+{% endblock %}
+
+{% block header %}
+    {% block headerTitle %}{{ 'legal_mentions.title'|trans }}{% endblock %}
+{% endblock %}
+
+{% block body %}
+<main class="container">
+    <div class="row">
+        <div class="">
+
+            <h3>{{ 'legal_mentions.editor'|trans }}</h3>
+
+            <p>{{ 'legal_mentions.edit'|trans }}
+
+
+            </p>
+
+            <h3>{{ 'legal_mentions.host'|trans }}</h3>
+            <p>{{ 'legal_mentions.hosting_company'|trans }}</p>
+
+            <h3>{{ 'legal_mentions.editorial'|trans }}</h3>
+            <p>{{ 'legal_mentions.editorial_news'|trans }}</p>
+
+            <h3>{{ 'legal_mentions.personal_data'|trans }}</h3>
+            <p>{{ 'legal_mentions.personal_data_edit'|trans }}</p>
+
+            <h3>{{ 'legal_mentions.intellectual_property'|trans }}</h3>
+            <p>1) {{ 'legal_mentions.intellectual_property_edit.first'|trans }}</p>
+
+            <p>2)  {{ 'legal_mentions.intellectual_property_edit.two'|trans }}</p>
+
+            <h4>{{ 'legal_mentions.intellectual_property_edit.content_pictures'|trans }}</h4>
+            <p>{{ 'legal_mentions.intellectual_property_edit.content_pictures_edit'|trans }}</p>
+
+            <h4>{{ 'legal_mentions.intellectual_property_edit.content_text'|trans }}</h4>
+            <p>{{ 'legal_mentions.intellectual_property_edit.content_text_edit'|trans }}</p>
+
+            <p>3)  {{ 'legal_mentions.intellectual_property_edit.three'|trans }} </p>
+            <h3>{{ 'legal_mentions.public_data'|trans }}</h3>
+
+            <p>{{ 'legal_mentions.public_data_edit'|trans }}</p>
+            <h3>{{ 'legal_mentions.cookies'|trans }}</h3>
+
+            <p>{{ 'legal_mentions.cookies_edit'|trans }}</p>
+            <h3>{{ 'legal_mentions.hypertext_links'|trans }}</h3>
+
+            <p>{{ 'legal_mentions.hypertext_links_edit'|trans }}</p>
+            <h3>{{ 'legal_mentions.liability'|trans }}</h3>
+
+            <p>{{ 'legal_mentions.liability_edit'|trans }}</p>
+
+
+        </div>
+    </div>
+</main>
+{% endblock %}
+{% block news %}{% endblock %}

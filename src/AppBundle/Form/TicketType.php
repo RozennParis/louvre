@@ -29,14 +29,11 @@ class TicketType extends AbstractType
             ])
             ->add('birthDate', DateType::class, [
                 'widget' => 'single_text',
-                'placeholder' => 'ex: 06-05-1998',
                 'label' => 'ticket.birth_date',
-                'format' => 'dd-MM-yyyy',
                 'years' => range(date('Y'), date('Y') - self::YEARS_IN_PAST)
             ])
             ->add('country', CountryType::class, [
                 'label' => 'ticket.country',
-
                 'preferred_choices'=>[
                     'FR'
                 ]
