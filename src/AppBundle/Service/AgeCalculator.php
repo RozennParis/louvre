@@ -1,17 +1,11 @@
 <?php
-namespace AppBundle\Service;
 
-use AppBundle\Entity\Booking;
-use AppBundle\Entity\Ticket;
+namespace AppBundle\Service;
 
 class AgeCalculator
 {
-    public function ageCalcul($visitDate, $birthDate)
+    public function ageCalcul(\DateTimeInterface $visitDate, \DateTimeInterface $birthDate)
     {
-        $age = date_diff($visitDate, $birthDate);
-        $age = get_object_vars($age);
-        $age = $age['y'];
-
-        return $age;
+        return date_diff($visitDate, $birthDate)->y;
     }
 }

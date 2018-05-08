@@ -1,14 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rozenn
- * Date: 29/03/18
- * Time: 15:07
- */
-
 namespace AppBundle\Service;
 
 use AppBundle\Service\AgeCalculator;
+use PHPUnit\Runner\Exception;
 
 
 class Tarificator
@@ -18,12 +12,21 @@ class Tarificator
     const CHILD_PRICE = 8;
     const SENIOR_PRICE = 12;
     const REDUCE_PRICE = 10;
-    private $price;
 
 
-    public function priceOfTicket($reduceRate,$age, $typeOfTicket)
+    public function priceOfTicket($reduceRate, $age, $typeOfTicket)
     {
-        if (!$reduceRate) {
+        $price = 0;
+        if (!is_bool($reduceRate) | !is_int($age) | !is_bool($typeOfTicket) )
+        {
+            throw new \InvalidArgumentException('The format of arguments is wrong');
+        }
+
+        if ($reduceRate && $age>= 12){
+            $price = self::REDUCE_PRICE;
+        }
+
+        else{
             switch ($age) {
                 case ($age>= 12 && $age< 60) :
                     $price = self::ADULT_PRICE;
@@ -38,9 +41,6 @@ class Tarificator
                     $price = self::SENIOR_PRICE;
                     break;
             }
-        }
-        else {
-            $price = self::REDUCE_PRICE;
         }
 
         if ($typeOfTicket === false )

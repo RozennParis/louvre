@@ -96,7 +96,7 @@ class BookingManager extends AbstractController
 
             $price = $this->tarificator->priceOfTicket($ticket->getReduceRate(), $ticket->getAge(), $booking->getTypeOfTicket());
             $ticket->setPrice($price);
-
+            dump($price);
             $totalPrice += $ticket->getPrice();
         }
         $booking->setTotalPrice($totalPrice);
@@ -119,9 +119,6 @@ class BookingManager extends AbstractController
         return $transactionId;
     }
 
-    /**
-     * @return mixed
-     */
     public function getBookingFromSession()
     {
         $booking = $this->session->get('booking'); //gérer le cas où pas de booking

@@ -3,6 +3,9 @@ app:
     type: annotation
     prefix: /{_locale}
 
-homepage:
+root:
     path: /
-    defaults: { _controller: AppBundle:Booking:index}
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: homepage
+        permanent: false
