@@ -19,7 +19,10 @@ header:
         museum: 'Louvre museum'
 home: Home
 mail.booking.total_price: 'Booking''s total price'
-payment.title: 'Payment - Louvre Ticketing'
+payment:
+    stripe_title: 'Payment - Louvre Ticketing'
+    stripe_label: 'Pay with card'
+payment.message.success: 'Well done, the payment was well made !'
 practical_informations: 'Pratical news'
 practical_news:
     head:
@@ -56,6 +59,7 @@ ticket:
     country: Country
     reduce_rate: 'Reduce rate '
     unit_price: 'Unit price-€'
+tickets: Ticket(s)
 legal_mentions:
     title: 'Legal mentions'
     editor: 'Publishing'

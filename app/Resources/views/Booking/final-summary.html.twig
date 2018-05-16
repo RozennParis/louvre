@@ -6,6 +6,9 @@
 
 {% block body %}
     <main class="container">
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            {{ flashMessage|trans }}
+        {% endfor %}
         <div class="row">
             <div class="">
                 <h2>{{ 'step_title'|trans }} 4</h2>

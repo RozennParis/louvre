@@ -25,21 +25,27 @@ class Ticket
 
     /**
      * @var string
-     * @Assert\Type("string")
+     * @Assert\NotBlank(groups={"stepTwo"})
+     * @Assert\NotNull(groups={"stepTwo"})
+     * @Assert\Type("string", groups={"stepTwo"})
      * @ORM\Column(name="lastName", type="string", length=255)
      */
     private $lastName;
 
     /**
      * @var string
-     * @Assert\Type("string")
+     * @Assert\NotBlank(groups={"stepTwo"})
+     * @Assert\NotNull(groups={"stepTwo"})
+     * @Assert\Type("string", groups={"stepTwo"})
      * @ORM\Column(name="firstName", type="string", length=255)
      */
     private $firstName;
 
     /**
      * @var \DateTime
-     * @Assert\Date()
+     * @Assert\NotBlank(groups={"stepTwo"})
+     * @Assert\NotNull(groups={"stepTwo"})
+     * @Assert\Date(groups={"stepTwo"})
      * @Assert\LessThanOrEqual("today", groups={"stepTwo"})
      * @ORM\Column(name="birthDate", type="datetime")
      */
@@ -52,7 +58,7 @@ class Ticket
     private $country;
 
     /**
-     * @Assert\Type("bool")
+     * @Assert\Type("bool", groups={"stepTwo"})
      * @ORM\Column(name="reduceRate", type="boolean")
      */
     private $reduceRate = false;

@@ -46,7 +46,7 @@ class TarificatorTest extends TestCase
     public function testPriceOfTicketThrowningException($reduceRate, $age, $typeOfTicket)
     {
         $price = new Tarificator();
-        $this->expectException('InvalidArgumentException');
+        $this->expectException(\InvalidArgumentException::class);
 
         $price->priceOfTicket($reduceRate, $age, $typeOfTicket);
     }

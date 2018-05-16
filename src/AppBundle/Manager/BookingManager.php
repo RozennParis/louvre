@@ -12,13 +12,12 @@ use AppBundle\Service\MailerService;
 use AppBundle\Service\Tarificator;
 use AppBundle\Service\Payment;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
-class BookingManager extends AbstractController
+class BookingManager
 {
     /**
      * @var EntityManagerInterface
@@ -113,7 +112,7 @@ class BookingManager extends AbstractController
             $this->entityManager->persist($booking);
             $this->entityManager->flush();
 
-            $this->mailerService->sendMail($booking);;
+            $this->mailerService->sendMail($booking);
         }
 
         return $transactionId;

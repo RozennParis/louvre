@@ -38,10 +38,11 @@
                 <form action="{{ path('summary') }}" method="post">
                     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                             data-key="{{ stripe_public_key }}"
-                            data-description="{{ 'payment.title'|trans }}"
+                            data-description="{{ 'payment.stripe_title'|trans }}"
                             data-amount="{{ booking.totalPrice * 100}}"
                             data-locale="{{ app.request.locale }}"
                             data-currency='eur'
+                            data-label="{{ 'payment.stripe_label'|trans }}"
                             data-email='{{ booking.email }}'>
                     </script>
                 </form>

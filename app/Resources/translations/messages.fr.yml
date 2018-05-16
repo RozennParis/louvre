@@ -19,7 +19,10 @@ header:
         museum: 'Le Louvre'
 home: Accueil
 mail.booking.total_price: 'Prix total de la commande'
-payment.title: 'Paiement - Billetterie du Louvre'
+payment:
+    stripe_title: 'Paiement - Billetterie du Louvre'
+    stripe_label: 'Paiement carte'
+payment.message.success: 'Le paiement a bien été effectué !'
 practical_informations: 'Infos pratiques'
 practical_news:
     title: 'Informations pratiques'
@@ -55,6 +58,7 @@ ticket:
     country: Pays
     reduce_rate: 'Tarif réduit '
     unit_price: 'Prix unitaire-€'
+tickets: Ticket(s)
 legal_mentions:
     title: 'Mentions légales'
     editor: 'Informations éditeur'

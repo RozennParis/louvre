@@ -39,21 +39,25 @@ class Booking
 
     /**
      * @var string
-     * @Assert\Email()
+     * @Assert\Email(groups={"stepOne"})
+     * @Assert\NotBlank(groups={"stepOne"})
+     * @Assert\NotNull(groups={"stepOne"})
      * @ORM\Column(name="email", type="string", length=255)
      */
     private $email;
 
     /**
      * @var string
-     * @Assert\Type("bool")
+     * @Assert\Type("bool", groups={"stepOne"})
      * @ORM\Column(name="typeOfTicket", type="boolean")
      */
     private $typeOfTicket = self::TYPE_OF_TICKET_DAY;
 
     /**
      * @var \DateTime $visitDate
-     * @Assert\Date()
+     * @Assert\NotBlank(groups={"stepOne"})
+     * @Assert\NotNull(groups={"stepOne"})
+     * @Assert\Date(groups={"stepOne"})
      * @Assert\GreaterThanOrEqual("today", groups={"stepOne"})
      * @AppAssert\NotTuesday(groups={"stepOne"})
      * @AppAssert\NotSunday(groups={"stepOne"})
@@ -64,7 +68,9 @@ class Booking
 
     /**
      * @var int
-     * @Assert\Type("integer")
+     * @Assert\NotBlank(groups={"stepOne"})
+     * @Assert\NotNull(groups={"stepOne"})
+     * @Assert\Type("integer", groups={"stepOne"})
      * @ORM\Column(name="numberOfTickets", type="integer")
      */
     private $numberOfTickets;

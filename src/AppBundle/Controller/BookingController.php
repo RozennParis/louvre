@@ -82,7 +82,7 @@ class BookingController extends Controller
        if ($request->getMethod() === Request::METHOD_POST)
        {
            if($bookingManager->doPayment($request, $booking)){
-               //$this->addFlash("success","Le paiement a bien été effectué !");
+               $this->addFlash('success','payment.message.success');
                return $this->redirectToRoute('final_summary', [
                    'id'=> $booking->getId()
                ]);
@@ -98,7 +98,7 @@ class BookingController extends Controller
 
     /**
      * @Route("/final-summary/{id}", name="final_summary")
-     * @Method({"GET", "POST"}) //enlever le GET, juste pour tester au rafraichissement de la page
+     * @Method({"POST"}) //enlever le GET, juste pour tester au rafraichissement de la page
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
