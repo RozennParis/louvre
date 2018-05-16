@@ -1,0 +1,53 @@
+body{
+    height: 100%;
+    /*background-image: url("../../web/images/paris-2230080_1920.jpg");*/
+
+}
+
+#wrapper{
+    background-color: #5e5e5e;
+    max-width: 850px;
+    width: 100%;
+    position: relative;
+}
+
+
+/*<<<<<---------- Header ---------->>>>>*/
+header{
+    background-color: #222222;
+    min-height: 100px;
+}
+
+#logo{
+    margin-left: 15px;
+}
+
+#mainTitle{
+    color: #FFFFFF;
+    vertical-align: center;
+
+}
+
+/*<<<<<---------- Footer ---------->>>>>*/
+footer{
+    text-align: center;
+}
+
+a footer{
+    color: #FFFFFF;
+}
+#footer_first_part{
+    background-color: #4e4e4e;
+    min-height: 50px;
+
+
+}
+#footer_second_part{
+    background-color: #222222;
+    min-height: 50px;
+}
+
+#footer_final{
+    background-color: #222222;
+
+}
