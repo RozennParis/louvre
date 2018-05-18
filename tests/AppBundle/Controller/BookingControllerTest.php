@@ -23,11 +23,11 @@ class BookingControllerTest extends WebTestCase
     {
         return [
             ['GET', '/', 302],
-            ['GET', '/ticket', 301],
-            ['GET', '/summary', 301],
+            ['GET', '/fr/', 200],
+            ['GET', '/ticket', 404],
+            ['GET', '/summary', 404],
             ['POST', '/final-summary/15', 404]
         ];
-
     }
 
 

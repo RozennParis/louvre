@@ -3,14 +3,27 @@ body{
     /*background-image: url("../../web/images/paris-2230080_1920.jpg");*/
 
 }
+.container{
+    padding-left: 0;
+    padding-right: 0;
+}
 
-#wrapper{
+/*#wrapper{
     background-color: #5e5e5e;
     max-width: 850px;
     width: 100%;
     position: relative;
+}*/
+
+/*<<<<<---------- Navbar ---------->>>>>*/
+
+#nav-style{
+    background-color: #222222;
 }
 
+#navBar-style{
+    max-height: 24px;
+}
 
 /*<<<<<---------- Header ---------->>>>>*/
 header{
@@ -24,30 +37,38 @@ header{
 
 #mainTitle{
     color: #FFFFFF;
-    vertical-align: center;
 
 }
 
 /*<<<<<---------- Footer ---------->>>>>*/
 footer{
     text-align: center;
+    background-color: #222222;
 }
 
-a footer{
-    color: #FFFFFF;
+footer a{
+    color: #909090;
+}
+
+footer hr{
+    border-color: #909090;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 #footer_first_part{
     background-color: #4e4e4e;
     min-height: 50px;
+    margin-left: auto;
+    margin-right: auto;
 
 
 }
 #footer_second_part{
-    background-color: #222222;
     min-height: 50px;
 }
 
 #footer_final{
-    background-color: #222222;
+    color: #909090;
+    max-height: 30px;
 
 }

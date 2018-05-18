@@ -63,9 +63,10 @@ class BookingManager
     public function initBooking()
     {
         try {
-            $booking = $this->getBookingFromSession();
+            $booking = $this->getCurrentBooking();
         } catch (NoBookingException $e) {
             $booking = new Booking();
+            $this->session->set('booking', $booking);
         }
 
         return $booking;
@@ -95,7 +96,7 @@ class BookingManager
 
             $price = $this->tarificator->priceOfTicket($ticket->getReduceRate(), $ticket->getAge(), $booking->getTypeOfTicket());
             $ticket->setPrice($price);
-            dump($price);
+
             $totalPrice += $ticket->getPrice();
         }
         $booking->setTotalPrice($totalPrice);
@@ -118,7 +119,7 @@ class BookingManager
         return $transactionId;
     }
 
-    public function getBookingFromSession()
+    public function getCurrentBooking()
     {
         $booking = $this->session->get('booking'); //gérer le cas où pas de booking
 
@@ -139,9 +140,5 @@ class BookingManager
         return $id;
     }
 
-    public function setBookingSession(Booking $booking)
-    {
-        $this->session->set('booking', $booking);
-    }
 
 }

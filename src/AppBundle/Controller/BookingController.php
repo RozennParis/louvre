@@ -32,7 +32,6 @@ class BookingController extends Controller
         if($form->isSubmitted() && $form->isValid())
         {
             $bookingManager->completeInit($booking);
-            $bookingManager->setBookingSession($booking);
 
             return $this->redirectToRoute('ticket');
         }
@@ -50,7 +49,7 @@ class BookingController extends Controller
      */
     public function ticketAction(Request $request, BookingManager $bookingManager)
     {
-        $booking = $bookingManager->getBookingFromSession();
+        $booking = $bookingManager->getCurrentBooking();
 
         $form = $this->createForm(TicketsType::class, $booking);
         $form->handleRequest($request);
@@ -58,7 +57,6 @@ class BookingController extends Controller
         if($form->isSubmitted() && $form->isValid())
         {
             $bookingManager->getTicketPrice($booking);
-            $bookingManager->setBookingSession($booking);
 
             return $this->redirectToRoute('summary');
         }
@@ -76,7 +74,7 @@ class BookingController extends Controller
      */
     public function summaryAction(Request $request, BookingManager $bookingManager)
     {
-        $booking = $bookingManager->getBookingFromSession();
+        $booking = $bookingManager->getCurrentBooking();
 
 
        if ($request->getMethod() === Request::METHOD_POST)
@@ -104,7 +102,7 @@ class BookingController extends Controller
      */
     public function finalSummaryAction(BookingManager $bookingManager)
     {
-        $booking = $bookingManager->getBookingFromSession();
+        $booking = $bookingManager->getCurrentBooking();
         $bookingManager->clearSession();
 
 

@@ -5,56 +5,63 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}{{ 'head.main_title'|trans }}{% endblock %}</title>
 
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+            <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        <div class="container">
-        <header>
+        <div class="container" id="nav-style">
             <div class="row">
-            <nav class="navbar fixed-top" role="navigation">
-                <div id="navbarCollapse" class="collapse navbar-collapse">
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toogle navigation">
-                        <span class="navbar-toogler-icon"></span>
-                    </button>
+                <nav class=" navbar navbar-expand-md  navbar-fixed-top" id="navBar-style" role="navigation">
+                    <div id="navbarCollapse" class="collapse navbar-collapse">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="true" aria-label="Toogle navigation">
+                            <span class="navbar-toogler-icon"></span>
+                        </button>
 
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link"  href="{{ path('homepage') }}">{{ 'home'|trans }}</a>
-                        </li>
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link"  href="{{ path('homepage') }}">{{ 'home'|trans }}</a>
+                            </li>
 
-                        <li class="dropdown">
-                            <a class="nav-link" href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'header.label.language'|trans }} <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                {% set params = app.request.attributes.get('_route_params')|merge({'_locale': 'en'}) %}
-                                <li><a href="{{ path(app.request.attributes.get('_route'), params) }}">{{ 'english'|trans }}</a></li>
+                            <li class="dropdown">
+                                <a class="nav-link dropdown-toggle"  href="#" id="dropDownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'header.label.language'|trans }}</a>
 
-                                {% set params = app.request.attributes.get('_route_params')|merge({'_locale': 'fr'}) %}
-                                <li><a href="{{ path(app.request.attributes.get('_route'), params) }}">{{ 'french'|trans }}</li>
-                            </ul>
-                        </li>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    {% set params = app.request.attributes.get('_route_params')|merge({'_locale': 'en'}) %}
+                                    <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), params) }}">{{ 'english'|trans }}</a>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="https://www.louvre.fr/">{{ 'header.label.museum'|trans }}</a>
-                        </li>
-                    </ul>
+                                    {% set params = app.request.attributes.get('_route_params')|merge({'_locale': 'fr'}) %}
+                                    <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), params) }}">{{ 'french'|trans }}</a>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="https://www.louvre.fr/">{{ 'header.label.museum'|trans }}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+
+
+
+            <header>
+                <div class="row">
+                    <img id="logo" src="{{ asset('images/logo-louvre.jpg') }}" alt="logo du Louvre">
+                    <h1 class="text-center" id="mainTitle">{% block headerTitle %} {{ 'body.main.title'|trans }} {% endblock %}</h1>
 
                 </div>
-            </nav>
-            </div>
-            <div class="row">
-                <img id="logo" src="{{ asset('images/logo-louvre.jpg') }}" alt="logo du Louvre">
-                <h1 id="mainTitle">{% block headerTitle %} {{ 'body.main.title'|trans }} {% endblock %}</h1>
-            </div>
+                {% block headerImg %}
+                    <div class="row">
+                        <div class="col-sm-12 align-middle">
+                            <img src="{{ asset('images/architecture-1868312_1280.jpg') }}" class="img-fluid" alt="photo louvre de nuit">
+                        </div>
+                    </div>
+                {% endblock %}
 
-            {% block headerImg %}
-            <div>
-                <img src="{{ asset('images/architecture-1868312_1280.jpg') }}" class="img-fluid" alt="photo louvre de nuit">
-            </div>
-            {% endblock %}
-        </header>
+            </header>
         </div>
+
         <div class="container">
         <div class="row">
             <div class="col-8">
@@ -110,28 +117,29 @@
                     <img src="{{ asset('images/logo-american-express-1-1024x1024.png') }}" alt="american express logo">
                 </div>
             </div>
-            <div class="row" id="footer_second_part">
 
+            <div class="row" id="footer_second_part">
                 <div class="col-4 center align-self-center">
                     <p><a href="{{ path('news') }}">{{ 'practical_informations'|trans }}</a></p>
                 </div>
 
-                <div class="col-4  center align-middle align-self-center">
+                <div class="col-4 center align-self-center social-icons">
                     <a href="https://www.facebook.com/museedulouvre"><img src="{{ asset('images/facebook-2429746_640.png') }}" alt="facebook"></a>
                     <img src="{{ asset('images/instagram-1675670_640.png') }}" alt="instagram">
                     <a href="https://twitter.com/museelouvre"><img src="{{ asset('images/twitter-2430933_640.png') }}" alt="twitter"></a>
                 </div>
 
 
-                <div class="col-4 center align-middle">
+                <div class="col-4 center align-self-center">
                     <div><a href="{{ path('legal_mentions') }}">{{ 'legal_mentions.title'|trans }}</a></div>
                     <div><a href="{{ path('sale') }}">{{ 'general_terms_of_sale'|trans }}</a></div>
                 </div>
             </div>
+            <hr/>
 
             <div class="row" id="footer_final">
                 <div class="col-lg-12 center align-self-center" >
-                    <p class="text-white-50">&copy;Le Louvre - 2018 - Création Couleur Web</p>
+                    <p>&copy;Le Louvre - 2018 - Création Couleur Web</p>
                 </div>
             </div>
 
@@ -139,9 +147,9 @@
 
         {% block scripts %}
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+        <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
         {% endblock %}
-        </div>
+
     </body>
 </html>
