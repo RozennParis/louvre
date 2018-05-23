@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -35,8 +36,12 @@ class BookingType extends AbstractType
                     range(Booking::NB_TICKET_MIN,Booking::NB_TICKET_MAX),
                     range(Booking::NB_TICKET_MIN,Booking::NB_TICKET_MAX)),
                 'label' => 'booking.number_of_tickets'])
-            ->add('email', EmailType::class, [
-                'label' => 'booking.email'
+            ->add('email', RepeatedType::class, [
+                'type' => EmailType::class,
+                'invalid_message' => 'booking.email_error',
+                'required' => true,
+                'first_options' => ['label' => 'booking.email'],
+                'second_options' => ['label' => 'booking.repeat_mail']
             ])
         ;
 

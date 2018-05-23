@@ -2,12 +2,15 @@ body.main.title: 'Official Ticketing Service'
 booking:
     day: Day
     half_day: Half-day
-    email: 'Email address '
+    email: Your email
+    email_error: The email fields must match.
+    repeat_mail: Repeat your mail
     number_of_tickets: 'Number Of Tickets '
     type_of_ticket: 'Type of tickets '
     summary: "Booking's summary"
     total_price: 'Total price'
     visitDate: 'Visit date'
+email: Email
 english: en
 french: fr
 general_terms_of_sale: G.T.S
@@ -28,6 +31,8 @@ practical_news:
     head:
     title: 'Practical news'
     opening_hours: 'Opening hours'
+    schedule: Schedule
+    schedule_speech: The Louvre is open every day (except Tuesday) from 9 a.m. to 6 p.m. and night opening until 9:45 p.m. on Wednesdays and Fridays
     monday: Monday
     tuesday: Tuesday
     wednesday: Wednesday
@@ -43,6 +48,8 @@ practical_news:
     closed:
         day: closed
         days: 'Museum closed days'
+        days_closures: Closures
+        days_speech: January 1, May 1, May 8, December 25
     rates:
         adult: 'Adult rate, from 12 years '
         child: 'Child rate, from 4 to 12 years '

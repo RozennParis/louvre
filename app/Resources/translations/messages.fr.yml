@@ -2,12 +2,15 @@ body.main.title: 'Billetterie officielle'
 booking:
     day: Journée
     half_day: Demi-journée
-    email: 'Adresse mail '
+    email: Votre adresse mail
+    email_error: Les deux adresses email ne sont pas identiques
+    repeat_mail: Répétez votre adresse mail
     number_of_tickets: 'Nombre de tickets '
     type_of_ticket: 'Type de tickets'
     summary: 'Récapitulatif de la commande'
     total_price: 'Prix total'
-    visitDate: 'Jour de visite'
+    visitDate: 'Date de visite'
+email: Email
 english: en
 french: fr
 general_terms_of_sale: C.G.V
@@ -27,6 +30,8 @@ practical_informations: 'Infos pratiques'
 practical_news:
     title: 'Informations pratiques'
     opening_hours: 'Horaires d''ouverture'
+    schedule: Horaires
+    schedule_speech: Ouvert tous les jours de 9h à 18h sauf le mardi et nocturnes jusqu’à 21h45 le mercredi et le vendredi
     monday: Lundi
     tuesday: Mardi
     wednesday: Mercredi
@@ -42,6 +47,8 @@ practical_news:
     closed:
         day: fermé
         days: 'Jours de fermeture du musée'
+        days_closures: Fermetures
+        days_speech: 'Les 1er janvier, 1er mai, 8 mai et 25 décembre'
     rates:
         adult: 'Tarif adulte, dès de 12 ans '
         child: 'Tarif junior, de 4 à 12 ans '
