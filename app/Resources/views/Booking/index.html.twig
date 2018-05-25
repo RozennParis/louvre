@@ -17,8 +17,8 @@
                <h4>1 - {{ 'booking.visitDate'|trans }}</h4>
            </div>
 
-           {{ form_errors(form) }}
-           {{ form_row(form.visitDate) }}
+           {{ form_widget(form.visitDate) }}
+           {{ form_errors(form.visitDate) }}
 
            <div class="row personal-form-title" >
                <h4>2 - {{ 'tickets'|trans }}</h4>
@@ -40,6 +40,7 @@
            <div class="form-block">
                {{ form_row(form.email.first) }}
                {{ form_row(form.email.second) }}
+               {{ form_errors(form.email) }}
            </div>
 
            <button class="btn mx-auto" type="submit" name="indexValidation">{{ 'submit.button'|trans }}</button>

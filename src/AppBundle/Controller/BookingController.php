@@ -80,12 +80,15 @@ class BookingController extends Controller
        if ($request->getMethod() === Request::METHOD_POST)
        {
            if($bookingManager->doPayment($request, $booking)){
-               $this->addFlash('success','payment.message.success');
+               $this->addFlash('success', [
+                   'id'=>'payment_message.success',
+                   'parameters'=>['%email%'=> $booking->getEmail()]
+               ]);
                return $this->redirectToRoute('final_summary');
            }
-           /*else{
-               flash error paiement TODO
-           }*/
+           else{
+               $this->addFlash('error','payment.message.error');
+           }
        }
         return $this->render('Booking/summary.html.twig', [
             'booking'=>$booking

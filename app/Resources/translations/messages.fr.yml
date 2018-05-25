@@ -23,11 +23,14 @@ header:
         language: Langue
         museum: Le Louvre
 home: Accueil
+louvre_night: Le Louvre de nuit
 mail.booking.total_price: Prix total de la commande
 payment:
     stripe_title: 'Paiement - Billetterie du Louvre'
     stripe_label: 'Paiement carte'
-payment.message.success: 'Le paiement a bien été effectué ! Un mail a été envoyé à l''adresse suivante : '
+payment_message:
+    success: 'Le paiement a bien été effectué ! Un mail a été envoyé à l''adresse suivante : %email%'
+    error: ' Il y a eu un souci lors du paiement, il n''a pas été pris en compte ! Vous pouvez réessayer '
 practical_informations: Infos pratiques
 practical_news:
     title: Informations pratiques

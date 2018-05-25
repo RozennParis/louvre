@@ -63,21 +63,27 @@
                 </div>
                 {% block headerImg %}
                     <div class="row align-middle" id="louvre">
-                        <img  src="{{ asset('images/architecture-1868312_1920.jpg') }}" class="img-fluid" alt="photo louvre de nuit">
+                        <img  src="{{ asset('images/architecture-1868312_1920.jpg') }}" class="img-fluid" alt="{{ 'louvre_night'|trans }}">
                     </div>
                 {% endblock %}
             </div>
         </header>
 
-        {% block message %}
-        {% for flashMessage in app.session.flashbag.get('success') %}
-        <div class="alert alert-success alert-dismissible" role="alert">
-            {{ flashMessage|trans }}{% block moreMessage %}{% endblock %}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        {% endfor %}
+        {% block sucessMessage %}
+            {% for message in app.session.flashbag.get('success') %}
+                <div class="container" id="success-alert">
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        {% if message is iterable %}
+                            {{ message.id|trans(message.parameters|default({})) }}
+                        {% else %}
+                            {{ message|trans }}
+                        {% endif %}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
         {% endblock %}
 
         <div class="container">

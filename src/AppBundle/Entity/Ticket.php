@@ -25,28 +25,28 @@ class Ticket
 
     /**
      * @var string
-     * @Assert\NotBlank(groups={"stepTwo"})
-     * @Assert\NotNull(groups={"stepTwo"})
-     * @Assert\Type("string", groups={"stepTwo"})
+     * @Assert\NotBlank(groups={"stepTwo"}, payload={"severity"="error"})
+     * @Assert\NotNull(groups={"stepTwo"}, payload={"severity"="error"})
+     * @Assert\Type("string", groups={"stepTwo"}, payload={"severity"="error"})
      * @ORM\Column(name="lastName", type="string", length=255)
      */
     private $lastName;
 
     /**
      * @var string
-     * @Assert\NotBlank(groups={"stepTwo"})
-     * @Assert\NotNull(groups={"stepTwo"})
-     * @Assert\Type("string", groups={"stepTwo"})
+     * @Assert\NotBlank(groups={"stepTwo"}, payload={"severity"="error"})
+     * @Assert\NotNull(groups={"stepTwo"}, payload={"severity"="error"})
+     * @Assert\Type("string", groups={"stepTwo"}, payload={"severity"="error"})
      * @ORM\Column(name="firstName", type="string", length=255)
      */
     private $firstName;
 
     /**
      * @var \DateTime
-     * @Assert\NotBlank(groups={"stepTwo"})
-     * @Assert\NotNull(groups={"stepTwo"})
-     * @Assert\Date(groups={"stepTwo"})
-     * @Assert\LessThanOrEqual("today", groups={"stepTwo"})
+     * @Assert\NotBlank(groups={"stepTwo"}, payload={"severity"="error"})
+     * @Assert\NotNull(groups={"stepTwo"}, payload={"severity"="error"})
+     * @Assert\Date(groups={"stepTwo"}, payload={"severity"="error"})
+     * @Assert\LessThanOrEqual("today", groups={"stepTwo"}, payload={"severity"="error"})
      * @ORM\Column(name="birthDate", type="datetime")
      */
     private $birthDate;
@@ -58,7 +58,7 @@ class Ticket
     private $country;
 
     /**
-     * @Assert\Type("bool", groups={"stepTwo"})
+     * @Assert\Type("bool", groups={"stepTwo"}, payload={"severity"="error"})
      * @ORM\Column(name="reduceRate", type="boolean")
      */
     private $reduceRate = false;

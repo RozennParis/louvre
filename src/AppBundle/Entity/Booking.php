@@ -55,35 +55,35 @@ class Booking
 
     /**
      * @var \DateTime $visitDate
-     * @Assert\NotBlank(groups={"stepOne"})
-     * @Assert\NotNull(groups={"stepOne"})
-     * @Assert\Date(groups={"stepOne"})
-     * @Assert\GreaterThanOrEqual("today", groups={"stepOne"})
-     * @AppAssert\NotTuesday(groups={"stepOne"})
-     * @AppAssert\NotSunday(groups={"stepOne"})
-     * @AppAssert\NotHolidays(groups={"stepOne"})
+     * @Assert\NotBlank(groups={"stepOne"}, payload={"severity"="error"})
+     * @Assert\NotNull(groups={"stepOne"}, payload={"severity"="error"})
+     * @Assert\Date(groups={"stepOne"}, payload={"severity"="error"})
+     * @Assert\GreaterThanOrEqual("today", groups={"stepOne"}, payload={"severity"="error"})
+     * @AppAssert\NotTuesday(groups={"stepOne"}, payload={"severity"="error"})
+     * @AppAssert\NotSunday(groups={"stepOne"}, payload={"severity"="error"})
+     * @AppAssert\NotHolidays(groups={"stepOne"}, payload={"severity"="error"})
      * @ORM\Column(name="visitDate", type="datetime")
      */
     private $visitDate;
 
     /**
      * @var int
-     * @Assert\NotBlank(groups={"stepOne"})
-     * @Assert\NotNull(groups={"stepOne"})
-     * @Assert\Type("integer", groups={"stepOne"})
+     * @Assert\NotBlank(groups={"stepOne"}, payload={"severity"="error"})
+     * @Assert\NotNull(groups={"stepOne"}, payload={"severity"="error"})
+     * @Assert\Type("integer", groups={"stepOne"}, payload={"severity"="error"})
      * @ORM\Column(name="numberOfTickets", type="integer")
      */
     private $numberOfTickets;
 
     /**
      * @var int
-     * @Assert\Type("integer")
+     * @Assert\Type("integer", payload={"severity"="error"})
      * @ORM\Column(name="totalPrice", type="integer")
      */
     private $totalPrice;
 
     /**
-     * @Assert\Valid(groups={"stepTwo"})
+     * @Assert\Valid(groups={"stepTwo"}, payload={"severity"="error"})
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Ticket", mappedBy="booking", cascade={"persist"})
      */
     private $tickets;
