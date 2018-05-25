@@ -6,36 +6,35 @@
 {% endblock %}
 
 {% block step %}
-    <h2>{{ 'step_title'|trans }} 1</h2>
+    <h2 id="step-title">{{ 'step_title'|trans }} 1</h2>
 {% endblock %}
 
 {% block body %}
-    <div class="col-8">
-       <main class="container personal-form">
+    <div class="col-md-8 col-sm-12">
+       <main class="personal-form">
            {{ form_start(form) }}
            <div class="row personal-form-title" >
-                <div>
-                   <h4>1 - {{ 'booking.visitDate'|trans }}</h4>
-                </div>
+               <h4>1 - {{ 'booking.visitDate'|trans }}</h4>
            </div>
 
-                    {{ form_errors(form) }}
-                    {{ form_row(form.visitDate) }}
+           {{ form_errors(form) }}
+           {{ form_row(form.visitDate) }}
+
            <div class="row personal-form-title" >
-               <div>
-                   <h4>2 - {{ 'tickets'|trans }}</h4>
-               </div>
+               <h4>2 - {{ 'tickets'|trans }}</h4>
            </div>
 
            <div class="form-block">
-                   {{ form_row(form.typeOfTicket) }}
-                   {{ form_row(form.numberOfTickets) }}
+               {{ form_row(form.typeOfTicket) }}
+               <p>
+                   {{ 'booking.day_schedule'|trans }} <br>
+                   {{ 'booking.half_day_schedule'|trans }}
+               </p>
+               {{ form_row(form.numberOfTickets) }}
            </div>
 
            <div class="row personal-form-title" >
-               <div>
-                   <h4>3- {{ 'email'|trans }}</h4>
-               </div>
+               <h4>3- {{ 'email'|trans }}</h4>
            </div>
 
            <div class="form-block">

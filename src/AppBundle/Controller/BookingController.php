@@ -81,11 +81,11 @@ class BookingController extends Controller
        {
            if($bookingManager->doPayment($request, $booking)){
                $this->addFlash('success','payment.message.success');
-               return $this->redirectToRoute('final_summary', [
-                   'id'=> $booking->getId()
-               ]);
+               return $this->redirectToRoute('final_summary');
            }
-
+           /*else{
+               flash error paiement TODO
+           }*/
        }
         return $this->render('Booking/summary.html.twig', [
             'booking'=>$booking
@@ -95,8 +95,8 @@ class BookingController extends Controller
 
 
     /**
-     * @Route("/final-summary/{id}", name="final_summary")
-     * @Method({"POST"}) //enlever le GET, juste pour tester au rafraichissement de la page
+     * @Route("/final-summary", name="final_summary")
+     * @Method({"GET","POST"})
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */

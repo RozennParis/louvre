@@ -4,37 +4,39 @@
     {{parent()}} - {{ 'general_terms_of_sale'|trans }}
 {% endblock %}
 
-{% block header %}
-    {% block headerTitle %}{{ 'general_terms_of_sale.title'|trans }}{% endblock %}
+
+{% block headerTitle %}
+    {{ 'general_terms_of_sale.title'|trans }}
 {% endblock %}
 
-{% block headerImg %}
+{% block stepScale %}
+{% endblock %}
+
+{% block step %}
+    <h2 id="step-title">{{ 'step_title'|trans }} 3</h2>
 {% endblock %}
 
 {% block body %}
-    <main class="container">
-        <div class="row">
-            <div class="">
-                <ul>
-                    <li>Article 1 : {{ 'cgv.objet'|trans }} </li>
-                    <li>Article 2 : {{ 'cgv.application'|trans }} </li>
-                    <li>Article 3 : {{ 'cgv.tickets_presentation'|trans }} </li>
-                    <li>Article 4 : {{ 'cgv.utilisation_conditions'|trans }} </li>
-                    <li>Article 5 : {{ 'cgv.using_modalities'|trans }} </li>
-                    <li>Article 6 : {{ 'cgv.rates'|trans }} </li>
-                    <li>Article 7 : {{ 'cgv.payment_modalities'|trans }} </li>
-                    <li>Article 8 : {{ 'cgv.payment_security'|trans }} </li>
-                    <li>Article 9 : {{ 'cgv.personal_data_processing'|trans }} </li>
-                    <li>Article 10 : {{ 'cgv.cookies'|trans }} </li>
-                    <li>Article 11 : {{ 'cgv.refund_application'|trans }} </li>
-                    <li>Article 12 : {{ 'cgv.contesting_bank_debit'|trans }} </li>
-                    <li>Article 13 : {{ 'cgv.responsability'|trans }} </li>
-                    <li>Article 14 : {{ 'cgv.law'|trans }} </li>
-                </ul>
-            </div>
+    <main>
+            <ul>
+                <li>Article 1 : {{ 'cgv.objet'|trans }} </li>
+                <li>Article 2 : {{ 'cgv.application'|trans }} </li>
+                <li>Article 3 : {{ 'cgv.tickets_presentation'|trans }} </li>
+                <li>Article 4 : {{ 'cgv.utilisation_conditions'|trans }} </li>
+                <li>Article 5 : {{ 'cgv.using_modalities'|trans }} </li>
+                <li>Article 6 : {{ 'cgv.rates'|trans }} </li>
+                <li>Article 7 : {{ 'cgv.payment_modalities'|trans }} </li>
+                <li>Article 8 : {{ 'cgv.payment_security'|trans }} </li>
+                <li>Article 9 : {{ 'cgv.personal_data_processing'|trans }} </li>
+                <li>Article 10 : {{ 'cgv.cookies'|trans }} </li>
+                <li>Article 11 : {{ 'cgv.refund_application'|trans }} </li>
+                <li>Article 12 : {{ 'cgv.contesting_bank_debit'|trans }} </li>
+                <li>Article 13 : {{ 'cgv.responsability'|trans }} </li>
+                <li>Article 14 : {{ 'cgv.law'|trans }} </li>
+            </ul>
 
+        <div class="row">
             <div>
-                <div>
                     <h3>1 - {{ 'cgv.objet'|trans }} </h3>
 
                     <p>1.1 - {{ 'cgv.paragraph.first.one'|trans }}</p>

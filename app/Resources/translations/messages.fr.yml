@@ -1,34 +1,36 @@
 body.main.title: 'Billetterie officielle'
 booking:
     day: Journée
+    day_schedule: 'Journée : 9h00 - 18h00 '
     half_day: Demi-journée
+    half_day_schedule: "Demi-journée : 14h00 - 18h00"
     email: Votre adresse mail
     email_error: Les deux adresses email ne sont pas identiques
     repeat_mail: Répétez votre adresse mail
-    number_of_tickets: 'Nombre de tickets '
-    type_of_ticket: 'Type de tickets'
-    summary: 'Récapitulatif de la commande'
-    total_price: 'Prix total'
-    visitDate: 'Date de visite'
+    number_of_tickets: Nombre de tickets
+    type_of_ticket: Type de tickets
+    summary: Récapitulatif de la commande
+    total_price: Prix total
+    visitDate: Date de visite
 email: Email
 english: en
 french: fr
 general_terms_of_sale: C.G.V
 general_terms_of_sale.title: 'Conditions Générales de Vente'
-head.main_title: 'Billetterie du Louvre'
+head.main_title: Billetterie du Louvre
 header:
     label:
         language: Langue
-        museum: 'Le Louvre'
+        museum: Le Louvre
 home: Accueil
-mail.booking.total_price: 'Prix total de la commande'
+mail.booking.total_price: Prix total de la commande
 payment:
     stripe_title: 'Paiement - Billetterie du Louvre'
     stripe_label: 'Paiement carte'
-payment.message.success: 'Le paiement a bien été effectué !'
-practical_informations: 'Infos pratiques'
+payment.message.success: 'Le paiement a bien été effectué ! Un mail a été envoyé à l''adresse suivante : '
+practical_informations: Infos pratiques
 practical_news:
-    title: 'Informations pratiques'
+    title: Informations pratiques
     opening_hours: 'Horaires d''ouverture'
     schedule: Horaires
     schedule_speech: Ouvert tous les jours de 9h à 18h sauf le mardi et nocturnes jusqu’à 21h45 le mercredi et le vendredi
@@ -39,16 +41,16 @@ practical_news:
     friday: Vendredi
     saturday: Samedi
     sunday: Dimanche
-    holidays: 'Jours fériés'
-    new_year: '1er Janvier'
-    may_first: '1er Mai'
-    november_first: '1er Novembre'
-    christmas: '25 décembre'
+    holidays: Jours fériés
+    new_year: 1er Janvier
+    may_first: 1er Mai
+    november_first: 1er Novembre
+    christmas: 25 décembre
     closed:
         day: fermé
-        days: 'Jours de fermeture du musée'
+        days: Jours de fermeture du musée
         days_closures: Fermetures
-        days_speech: 'Les 1er janvier, 1er mai, 8 mai et 25 décembre'
+        days_speech: Les 1er janvier, 1er mai, 8 mai et 25 décembre
     rates:
         adult: 'Tarif adulte, dès de 12 ans '
         child: 'Tarif junior, de 4 à 12 ans '
@@ -59,12 +61,13 @@ step_title: Étape
 submit.button: Valider
 summary: 'Récapitulatif de la commande n°%transactionId% du'
 ticket:
+    unit: Ticket
     lastname: Nom
     firstname: Prénom
     birth_date: 'Date de naissance '
     country: Pays
     reduce_rate: 'Tarif réduit '
-    unit_price: 'Prix unitaire-€'
+    unit_price: 'Prix unitaire - €'
 tickets: Ticket(s)
 legal_mentions:
     title: 'Mentions légales'

@@ -5,7 +5,7 @@
     <img src="{{ louvreLogo }}" alt="logo du Louvre">
     <h2>{{ 'head.main_title'|trans }}</h2>
 
-    <h3> {{ 'summary'|trans({ '%transactionId%': booking.transactionId }) }} {{ booking.bookingDate|date('d/m/Y') }}</h3>
+    <h3> {{ 'summary'|trans({ '%transactionId%': booking.transactionId }) }} {{ booking.bookingDate|localizeddate('medium', 'none') }}</h3>
 
     <div>
         <p><strong>{{ 'mail.booking.total_price'|trans }}</strong> : {{ booking.totalPrice }} €</p>

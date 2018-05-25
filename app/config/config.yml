@@ -39,6 +39,7 @@ twig:
     globals:
         stripe_public_key: '%stripe_public_key%'
 
+
 # Doctrine Configuration
 doctrine:
     dbal:

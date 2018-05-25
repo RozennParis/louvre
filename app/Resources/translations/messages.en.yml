@@ -1,7 +1,9 @@
 body.main.title: 'Official Ticketing Service'
 booking:
     day: Day
+    day_schedule: 'Day : from 9am to 6pm'
     half_day: Half-day
+    half_day_schedule: 'Half-day : from 2pm to 6pm'
     email: Your email
     email_error: The email fields must match.
     repeat_mail: Repeat your mail
@@ -25,10 +27,9 @@ mail.booking.total_price: 'Booking''s total price'
 payment:
     stripe_title: 'Payment - Louvre Ticketing'
     stripe_label: 'Pay with card'
-payment.message.success: 'Well done, the payment was well made !'
+payment.message.success: 'Well done, the payment was well made ! An e-mail was sent to the following address : '
 practical_informations: 'Pratical news'
 practical_news:
-    head:
     title: 'Practical news'
     opening_hours: 'Opening hours'
     schedule: Schedule
@@ -60,12 +61,13 @@ step_title: Step
 submit.button: Validate
 summary: 'Summary of booking n°%transactionId% of'
 ticket:
+    unit: Ticket
     lastname: 'Lastname '
     firstname: 'Firstname '
     birth_date: 'Birth date '
     country: Country
     reduce_rate: 'Reduce rate '
-    unit_price: 'Unit price-€'
+    unit_price: 'Unit price - €'
 tickets: Ticket(s)
 legal_mentions:
     title: 'Legal mentions'

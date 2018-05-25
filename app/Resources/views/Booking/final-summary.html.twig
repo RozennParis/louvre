@@ -1,49 +1,24 @@
-{% extends 'base.html.twig' %}
+{% extends 'Booking/summary.html.twig' %}
 
 {% block title %}
     {{parent()}} - {{ 'step_title'|trans }} 4
 {% endblock %}
 
-{% block body %}
-    <main class="container">
-        {% for flashMessage in app.session.flashbag.get('success') %}
-            {{ flashMessage|trans }}
-        {% endfor %}
-        <div class="row">
-            <div class="">
-                <h2>{{ 'step_title'|trans }} 4</h2>
-            </div>
-            <div>
-                <h3>{{ 'booking.summary'|trans }} n°{{ booking.transactionId }}</h3>
-            </div>
-            <div>
-                <table>
-                    <tr>
-                        <th>{{ 'ticket.lastname'|trans }}</th>
-                        <th>{{ 'ticket.firstname'|trans }}</th>
-                        <th>{{ 'ticket.unit_price'|trans }}</th>
-
-                    </tr>
-
-                    {% for ticket in booking.tickets %}
-                        <tr>
-                            <td>{{ ticket.firstName }}</td>
-                            <td>{{ ticket.lastName }}</td>
-                            <td>{{ ticket.price }}</td>
-                        </tr>
-                    {%  endfor %}
-                    <tr>
-                        <td class="row">{{ 'booking.total_price'|trans }}</td>
-                        <td>{{ booking.totalPrice }}</td>
-                    </tr>
-                </table>
-
-
-            </div>
-        </div>
-    </main>
+{% block moreMessage %}
+    {{ booking.email }}
 {% endblock %}
 
-{% block stylesheets %}
+{% block step %}
+    <h2 id="step-title">{{ 'step_title'|trans }} 4</h2>
+{% endblock %}
 
+{% block summaryTitle %}
+    n°{{ booking.transactionId }}
+{% endblock %}
+
+{% block payment %}
+{% endblock %}
+
+
+{% block stylesheets %}
 {% endblock %}

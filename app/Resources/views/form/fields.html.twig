@@ -5,10 +5,15 @@
     </div>
 {% endblock %}
 
-{% block choice_widget %}
-    <div class="choice_widget">
-        {% set type = type|default('choice') %}
-        {{ block('form_widget') }}
+{% block text_widget %}
+    <div class="text_widget">
+        {% set type = type|default('text') %}
+        {{ block('form_widget_simple') }}
     </div>
 {% endblock %}
+
+
+
+
+
 

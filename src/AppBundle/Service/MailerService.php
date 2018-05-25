@@ -29,7 +29,6 @@ class MailerService
     public function sendMail(Booking $booking)
     {
         $message = (new Swift_Message())
-            ->setDate('n')
             ->setSubject('Votre commande de billets d\'entrée pour le Louvre ')
             ->setFrom('rozenn.paris@gmail.com')
             ->setTo($booking->getEmail());

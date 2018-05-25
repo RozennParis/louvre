@@ -9,7 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class NotMoreThousandValidator extends ConstraintValidator
 {
-    const MAX_TICKET_PER_DAY = 20;
+    const MAX_TICKET_PER_DAY = 1000;
     /**
      * @var EntityManagerInterface
      */
