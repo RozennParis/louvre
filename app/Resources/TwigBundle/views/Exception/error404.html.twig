@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{parent()}} - {{ 'error.not_found'|trans }} 1
+{% endblock %}
+
+{% block language %}
+{% endblock %}
+
+{% block step %}
+    <h2 id="step-title">{{ 'error.page_not_found'|trans }}</h2>
+{% endblock %}
+
+{% block stepScale %}
+{% endblock %}
+
+{% block body %}
+<div class="row personal-form-title">
+     <h4>{{  'error.page_not_found_bis'|trans }}</h4>
+</div>
+<div class="row error-page justify-content-center">
+    <img src="{{ asset('images/800px-Mona_Lisa,_by_Leonardo_da_Vinci,_from_C2RMF_retouched.jpg') }}" class="rounded mx-auto d-block" alt="Mona Lisa">
+</div>
+
+    <div class=" row justify-content-center">
+        <p class="form-block text-center">
+            {{ 'mona'|trans }}
+            <a href="{{ path('homepage') }}">{{ 'mona_button'|trans }}</a>
+        </p>
+    </div>
+ </div>
+
+{% endblock %}
+
+
+{% block news %}
+{% endblock %}
+
+{% block returnButton %}
+{% endblock %}

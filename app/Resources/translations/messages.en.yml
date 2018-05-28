@@ -16,7 +16,13 @@ email: Email
 english: en
 error:
     not_found: Not found page
-    page_not_found: 'The page was not found '
+    page_not_found: 'The page wasn''t found'
+    page_not_found_bis: 'Ooooops ! Leonardo didn''t finished to paint this page !!!'
+    server: server error
+    page_server: The server failed
+    page_server_bis: 'Leo !!! We have already told you to stop playing with the threads... !!!'
+    yarn: 'Please excuse us for this setback, all our technical team works to restart the server.'
+    yarn_picture: tangled threads
 french: fr
 from: from
 general_terms_of_sale: G.T.S
@@ -30,6 +36,8 @@ home: Home
 licensed_by: is licensed by
 louvre_night: 'Louvre museum by night'
 mail.booking.total_price: 'Booking''s total price'
+mona: 'In the meantime, you can always come to see me '
+mona_button: here
 payment:
     stripe_title: 'Payment - Louvre Ticketing'
     stripe_label: 'Pay with card'

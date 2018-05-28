@@ -17,6 +17,12 @@ english: en
 error:
     not_found: Page inexistante
     page_not_found: 'La page n''a pas été trouvée'
+    page_not_found_bis: 'Oups ! Leonardo n''a pas terminé de peindre la page que vous demandez !!!'
+    server: erreur serveur
+    page_server: Erreur de serveur
+    page_server_bis: 'Leo !!! On t''a déjà dit de pas jouer avec les fils... !!!'
+    yarn: 'Veuillez nous excuser pour ce contretemps, toute notre équipe technique travaille afin de remettre le serveur en route.'
+    yarn_picture: fils emmêlés
 french: fr
 from: de
 general_terms_of_sale: C.G.V
@@ -30,6 +36,8 @@ home: Accueil
 licensed_by: ' font l''objet d''une licence '
 louvre_night: Le Louvre de nuit
 mail.booking.total_price: Prix total de la commande
+mona: 'En attendant, vous pouvez toujours venir me voir par  '
+mona_button: ici
 payment:
     stripe_title: 'Paiement - Billetterie du Louvre'
     stripe_label: 'Paiement carte'

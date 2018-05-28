@@ -31,18 +31,16 @@
                                 <li class="nav-item">
                                     <a class="nav-link" id="louvre-nav" href="https://www.louvre.fr/">{{ 'header.label.museum'|trans }}</a>
                                 </li>
-
+                                {% block language %}
                                 <li class="dropdown">
                                     <a class="nav-link dropdown-toggle"  href="#" id="dropDownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ 'header.label.language'|trans }}</a>
 
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                                        {% set params = app.request.attributes.get('_route_params')|merge({'_locale': 'en'}) %}
-                                        <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), params) }}">{{ 'english'|trans }}</a>
-
-                                        {% set params = app.request.attributes.get('_route_params')|merge({'_locale': 'fr'}) %}
-                                        <a class="dropdown-item" href="{{ path(app.request.attributes.get('_route'), params) }}">{{ 'french'|trans }}</a>
+                                        <a class="dropdown-item" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'en'})) }}">{{ 'english'|trans }}</a>
+                                        <a class="dropdown-item" href="{{ path(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': 'fr'})) }}">{{ 'french'|trans }}</a>
                                     </div>
                                 </li>
+                                {% endblock %}
                             </ul>
                         </div>
                     </nav>
@@ -133,15 +131,15 @@
                         </div>
 
                         <div>
-                        <h4>{{ 'cgv.rates'|trans }}</h4>
-                        <ul>
-                            <li>{{ 'practical_news.rates.adult'|trans }} : 16€ </li>
-                            <li>{{ 'practical_news.rates.child'|trans }} : 8€ </li>
-                            <li>{{ 'practical_news.rates.under_four'|trans }} : 0€ </li>
-                            <li>{{ 'practical_news.rates.senior'|trans }} : 12€ </li>
-                            <li>{{ 'ticket.reduce_rate'|trans }}* : 10€ </li>
-                        </ul>
-                        <p>*{{ 'practical_news.reduce_rate'|trans }}</p>
+                            <h4>{{ 'cgv.rates'|trans }}</h4>
+                            <ul>
+                                <li>{{ 'practical_news.rates.adult'|trans }} : 16€ </li>
+                                <li>{{ 'practical_news.rates.child'|trans }} : 8€ </li>
+                                <li>{{ 'practical_news.rates.under_four'|trans }} : 0€ </li>
+                                <li>{{ 'practical_news.rates.senior'|trans }} : 12€ </li>
+                                <li>{{ 'ticket.reduce_rate'|trans }}* : 10€ </li>
+                            </ul>
+                            <p>*{{ 'practical_news.reduce_rate'|trans }}</p>
                         </div>
                     </div>
                 {% endblock %}

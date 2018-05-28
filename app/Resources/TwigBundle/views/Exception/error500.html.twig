@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{parent()}} - {{ 'error.server'|trans }} 1
+{% endblock %}
+
+{% block language %}
+{% endblock %}
+
+{% block step %}
+    <h2 id="step-title">{{ 'error.page_server'|trans }}</h2>
+{% endblock %}
+
+{% block stepScale %}
+{% endblock %}
+
+{% block body %}
+    <div class="row personal-form-title">
+        <h4>{{  'error.page_server_bis'|trans }}</h4>
+    </div>
+    <div class="row error-page justify-content-center">
+        <img src="{{ asset('images/depositphotos_11611619-stock-photo-close-up-of-colorful-tangled.jpg') }}" class="rounded mx-auto d-block" alt="{{ 'error.yarn_picture'|trans }}">
+    </div>
+
+    <div class=" row justify-content-center">
+        <p class="form-block text-center">
+            {{ 'error.yarn'|trans }}
+        </p>
+    </div>
+    </div>
+
+{% endblock %}
+
+
+{% block news %}
+{% endblock %}
+
+{% block returnButton %}
+{% endblock %}
+
