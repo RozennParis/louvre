@@ -14,7 +14,11 @@ booking:
     visitDate: Date de visite
 email: Email
 english: en
+error:
+    not_found: Page inexistante
+    page_not_found: 'La page n''a pas été trouvée'
 french: fr
+from: de
 general_terms_of_sale: C.G.V
 general_terms_of_sale.title: 'Conditions Générales de Vente'
 head.main_title: Billetterie du Louvre
@@ -23,6 +27,7 @@ header:
         language: Langue
         museum: Le Louvre
 home: Accueil
+licensed_by: ' font l''objet d''une licence '
 louvre_night: Le Louvre de nuit
 mail.booking.total_price: Prix total de la commande
 payment:
@@ -60,6 +65,7 @@ practical_news:
         under_four: 'Tarif enfant, moins de 4 ans '
         senior: 'Tarif senior, dès de 60 ans '
     reduce_rate : "Le tarif réduit est accordé dans certaines conditions : étudiants, employé du musée, militaire, service du Ministère de la culture... Une pièce justificative sera obligatoirement demandée"
+    way_to_go: 'Comment s''y rendre ?'
 step_title: Étape
 submit.button: Valider
 summary: 'Récapitulatif de la commande n°%transactionId% du'
@@ -72,6 +78,7 @@ ticket:
     reduce_rate: 'Tarif réduit '
     unit_price: 'Prix unitaire - €'
 tickets: Ticket(s)
+ticketing_return: 'Retour à la billetterie'
 legal_mentions:
     title: 'Mentions légales'
     editor: 'Informations éditeur'
@@ -111,6 +118,8 @@ legal_mentions:
         content_pictures: Photographies
         content_pictures_edit: "Les photographies créditées © Musée du Louvre / [ …] sont la propriété exclusive du musée du Louvre et sont utilisées par le musée du Louvre avec l’autorisation de leurs auteurs ou ayants-droits. Les photographies créditées © RMN / [ …] sont la propriété de la RMN. Toute réutilisation non commerciale est autorisée sous condition de  la mention de la source et de l’auteur. Pour toute réutilisation  commerciale et/ou éditoriale d’image des collections du Musée du Louvre, du Palais, du domaine Louvre Tuileries, du Musée Delacroix ou encore de la scénographie des expositions et autres manifestations culturelles organisées par le Musée du Louvre, veuillez contacter l’Agence photographique de la Réunion des Musées nationaux et du Grand Palais des Champs-Elysées (Rmn-Gp)."
 
+        content_flavicon: 'Icônes fournies par '
+
         content_text: Écrits
         content_text_edit: "Le musée du Louvre est cessionnaire des textes des parcours de visites et de notices d’œuvres. Toute réutilisation de ces écrits est libre, à la condition que ces derniers ne soient pas altérés, que leur sens ne soit pas dénaturé, et que leurs sources et la date de leur dernière mise à jour soient mentionnées. Toute réutilisation commerciale est soumise à l'accord préalable et exprès du musée du Louvre. Pour toute demande entrant dans ce cadre, merci de contacter le Service Multimédia du musée du Louvre."
 
@@ -144,6 +153,8 @@ cgv:
     application: 'Champ d''application des présentes conditions générales de vente'
     tickets_presentation: 'Présentation des billets'
     utilisation_conditions: 'Conditions d''utilisation'
+    tickets: Tickets
+    security_measures: 'Mesures de sécurité'
     using_modalities: 'Modalités de commande'
     rates: Tarifs
     payment_modalities: 'Modalités de paiement'

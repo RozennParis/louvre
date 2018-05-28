@@ -10,15 +10,16 @@
 {% endblock %}
 
 {% block body %}
-    <div class="col-md-8 col-sm-12">
-       <main class="personal-form">
+    <div class="col-md-8 col-sm-12 personal-form">
+       <main>
            {{ form_start(form) }}
            <div class="row personal-form-title" >
                <h4>1 - {{ 'booking.visitDate'|trans }}</h4>
            </div>
-
-           {{ form_widget(form.visitDate) }}
-           {{ form_errors(form.visitDate) }}
+           <div class="form-block">
+               {{ form_widget(form.visitDate) }}
+               {{ form_errors(form.visitDate) }}
+           </div>
 
            <div class="row personal-form-title" >
                <h4>2 - {{ 'tickets'|trans }}</h4>
@@ -50,6 +51,8 @@
     </div>
 {% endblock %}
 
-{% block stylesheets %}
+{% block returnButton %}
+{% endblock %}
 
+{% block stylesheets %}
 {% endblock %}

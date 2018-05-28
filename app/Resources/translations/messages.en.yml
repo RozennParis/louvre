@@ -14,7 +14,11 @@ booking:
     visitDate: 'Visit date'
 email: Email
 english: en
+error:
+    not_found: Not found page
+    page_not_found: 'The page was not found '
 french: fr
+from: from
 general_terms_of_sale: G.T.S
 general_terms_of_sale.title: 'Terms and Conditions'
 head.main_title: "Louvre's ticketing"
@@ -23,6 +27,7 @@ header:
         language: Language
         museum: 'Louvre museum'
 home: Home
+licensed_by: is licensed by
 louvre_night: 'Louvre museum by night'
 mail.booking.total_price: 'Booking''s total price'
 payment:
@@ -60,6 +65,7 @@ practical_news:
         under_four: 'Baby rate, child under 4 years '
         senior: 'Senior rate, from 60 years '
     reduce_rate : "The reduced rate is granted in certain conditions: students, employee of the museum, the serviceman, the department of the Ministry of Culture... A supporting document will be necessarily asked"
+    way_to_go: 'How to go to the Louvre ?'
 step_title: Step
 submit.button: Validate
 summary: 'Summary of booking n°%transactionId% of'
@@ -72,6 +78,7 @@ ticket:
     reduce_rate: 'Reduce rate '
     unit_price: 'Unit price - €'
 tickets: Ticket(s)
+ticketing_return: 'Ticketing return'
 legal_mentions:
     title: 'Legal mentions'
     editor: 'Publishing'
@@ -113,6 +120,7 @@ legal_mentions:
           Non-commercial re-use is authorized, provided the source and author are acknowledged.
 
           For any commercial and/or editorial re-use of an image from the collections of the Musée du Louvre, the Palace, the Domaine National du Louvre et des Tuileries, the Musée Delacroix or from the staging of exhibitions and other cultural events organized by the Musée du Louvre, please contact the photography agency Réunion des Musées nationaux et du Grand Palais des Champs-Elysées (Rmn-Gp)."
+        content_flavicon: 'Icons made by '
 
         content_text: Written work
         content_text_edit: "Rights to the thematic trail and artwork descriptions have been assigned to the Musée du Louvre.
@@ -156,6 +164,8 @@ cgv:
     application: Scope
     tickets_presentation: 'Presentation of tickets'
     utilisation_conditions: 'Conditions of use'
+    tickets: Tickets
+    security_measures: 'Security measures'
     using_modalities: 'Terms of ordering'
     rates: Rates
     payment_modalities: 'Terms of payment'

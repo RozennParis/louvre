@@ -8,7 +8,7 @@
             <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
             <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
             <link rel="icon" href="{{ asset('web-fonts-with-css/css/fontawesome-all.min.css') }}" />
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/mona-lisa.png') }}" />
     </head>
     <body>
         <header>
@@ -71,7 +71,7 @@
 
         {% block sucessMessage %}
             {% for message in app.session.flashbag.get('success') %}
-                <div class="container" id="success-alert">
+                <div class="container" id="success">
                     <div class="alert alert-success alert-dismissible" role="alert">
                         {% if message is iterable %}
                             {{ message.id|trans(message.parameters|default({})) }}
@@ -110,7 +110,7 @@
                 </div>
             {% endblock %}
 
-            <div class="row" id="step">
+            <div class="row step">
                 {% block step %}
                 {% endblock %}
             </div>
@@ -146,6 +146,12 @@
                     </div>
                 {% endblock %}
             </div>
+
+            {% block returnButton %}
+            <div class="row">
+                <a class="mx-auto" href="{{ path('homepage') }}"><button class="btn" id="return-button">{{ 'ticketing_return'|trans }}</button></a>
+            </div>
+            {% endblock %}
         </div>
 
 
