@@ -5,7 +5,6 @@ booking:
     half_day: Demi-journée
     half_day_schedule: "Demi-journée : 14h00 - 18h00"
     email: Votre adresse mail
-    email_error: Les deux adresses email ne sont pas identiques
     repeat_mail: Répétez votre adresse mail
     number_of_tickets: Nombre de tickets
     type_of_ticket: Type de tickets
@@ -66,7 +65,7 @@ practical_news:
         day: fermé
         days: Jours de fermeture du musée
         days_closures: Fermetures
-        days_speech: Les 1er janvier, 1er mai, 8 mai et 25 décembre
+        days_speech: Les 1er mai, 1er novembre et 25 décembre.
     rates:
         adult: 'Tarif adulte, dès de 12 ans '
         child: 'Tarif junior, de 4 à 12 ans '
@@ -77,6 +76,7 @@ practical_news:
 step_title: Étape
 submit.button: Valider
 summary: 'Récapitulatif de la commande n°%transactionId% du'
+thanks: Le musée vous remercie pour votre commande et vous souhaite une bonne visite
 ticket:
     unit: Ticket
     lastname: Nom

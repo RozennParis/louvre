@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="col-md-8 col-sm-12 personal-form">
+    <div class="col-lg-8 col-md-9 col-sm-12 personal-form">
        <main>
            {{ form_start(form) }}
            <div class="row personal-form-title" >
@@ -46,7 +46,6 @@
 
            <button class="btn mx-auto" type="submit" name="indexValidation">{{ 'submit.button'|trans }}</button>
            {{ form_end(form) }}
-
        </main>
     </div>
 {% endblock %}
@@ -54,5 +53,3 @@
 {% block returnButton %}
 {% endblock %}
 
-{% block stylesheets %}
-{% endblock %}

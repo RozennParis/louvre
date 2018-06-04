@@ -5,11 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>{% block title %}{{ 'head.main_title'|trans }}{% endblock %}</title>
 
-            <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-            <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
-            <link rel="icon" href="{{ asset('web-fonts-with-css/css/fontawesome-all.min.css') }}" />
-        <link rel="icon" type="image/x-icon" href="{{ asset('images/mona-lisa.png') }}" />
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+        <link rel="icon" href="{{ asset('web-fonts-with-css/css/fontawesome-all.min.css') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}" />
+        <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap-datepicker.min.css') }}">
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     </head>
+
     <body>
         <header>
             <div class="container" >
@@ -86,7 +89,7 @@
 
         <div class="container">
             {% block stepScale %}
-                <div class="row">
+                <div class="row brea">
 
                             <div class="col-sm-3">
                                 {% block stepOne %}
@@ -115,12 +118,18 @@
 
 
             <div class="row">
-                {% block body %}
+
+                    {% block body %}
+                    {% endblock %}
+
+                    {% block returnButton %}
+                        <div class="row">
+                            <a class="mx-auto" href="{{ path('homepage') }}"><button class="btn" id="return-button">{{ 'ticketing_return'|trans }}</button></a>
+                        </div>
                 {% endblock %}
 
-
                 {% block news %}
-                    <div class="col-md-4 col-sm-12 news">
+                    <div class="col-lg-4 col-md-3 col-sm-12 news">
                         <div >
                             <h4>{{ 'practical_news.title'|trans }}</h4>
                                 <h5>{{ 'practical_news.schedule'|trans }}</h5>
@@ -144,12 +153,6 @@
                     </div>
                 {% endblock %}
             </div>
-
-            {% block returnButton %}
-            <div class="row">
-                <a class="mx-auto" href="{{ path('homepage') }}"><button class="btn" id="return-button">{{ 'ticketing_return'|trans }}</button></a>
-            </div>
-            {% endblock %}
         </div>
 
 
@@ -189,11 +192,11 @@
 
         </footer>
 
-        {% block scripts %}
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-
         <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-        {% endblock %}
+        <script src="{{ asset('bootstrap/js/bootstrap-datepicker.min.js') }}"></script>
+        <script src="{{ asset('bootstrap/locales/bootstrap-datepicker.' ~ app.request.locale ~'.min.js') }}"></script>
+        <script src="{{ asset('js/datepicker.js') }}" charset="UTF-8" ></script>
 
     </body>
 </html>

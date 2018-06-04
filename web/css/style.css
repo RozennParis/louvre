@@ -20,7 +20,7 @@ h4, h5{
     width: 100%;
     margin: 0;
 }
-#success-alert{
+#success{
     margin: 2rem auto;
     background-color: transparent;
     padding-left: 0;
@@ -128,6 +128,7 @@ header .col-sm-4, header .col-sm-12{
 select{
     margin-left: 25px;
     margin-bottom: 15px;
+    width: 50%;
 }
 .form-block p{
     font-size: 0.9em;
@@ -164,11 +165,14 @@ select{
     border-width: 2px;
     margin-bottom: 25px;
     display: block;
-    width: 20%;
+    width: auto;
+
 }
 
 #return-button{
     width: auto;
+    text-decoration: none;
+
 }
 
 /*<<<<<---------- summary and payment ---------->>>>>*/
@@ -178,6 +182,9 @@ table{
 }
 
 
+.payment-button{
+    margin: 1rem auto;
+}
 /*<<<<<---------- news ---------->>>>>*/
 .news{
     background-color: #c82d00;
@@ -246,8 +253,18 @@ footer hr{
     border-width: 3px;
 }
 
-/*<<<<<---------- error pages ---------->>>>>*/
+/*<<<<<---------- error pages/field ---------->>>>>*/
 
 .error-page{
     margin: 3% auto;
+}
+
+.no-list{
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.no-list img{
+    margin-right: 10px;
 }

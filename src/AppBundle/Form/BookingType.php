@@ -8,7 +8,6 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -23,8 +22,12 @@ class BookingType extends AbstractType
             ->add('visitDate', DateType::class, [
                 'widget'=> 'single_text',
                 'label' => 'booking.visitDate',
-                'html5' => false,
-                'attr' => ['class' => 'js-datepicker']
+                /*'html5' => false,
+                'attr' => [
+                    'class' => 'js-datepicker',
+                    'data-provide' => 'datepicker',
+                    ],*/
+                'required' => true
             ])
             ->add('typeOfTicket', ChoiceType::class, [
                 'choices' => [

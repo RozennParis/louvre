@@ -5,7 +5,6 @@ booking:
     half_day: Half-day
     half_day_schedule: 'Half-day : from 2pm to 6pm'
     email: Your email
-    email_error: The email fields must match.
     repeat_mail: Repeat your mail
     number_of_tickets: 'Number Of Tickets '
     type_of_ticket: 'Type of tickets '
@@ -66,7 +65,7 @@ practical_news:
         day: closed
         days: 'Museum closed days'
         days_closures: Closures
-        days_speech: January 1, May 1, May 8, December 25
+        days_speech: May 1, November 1, December 25
     rates:
         adult: 'Adult rate, from 12 years '
         child: 'Child rate, from 4 to 12 years '
@@ -77,6 +76,7 @@ practical_news:
 step_title: Step
 submit.button: Validate
 summary: 'Summary of booking n°%transactionId% of'
+thanks: The museum thanks you for your order and whishes you a good visit
 ticket:
     unit: Ticket
     lastname: 'Lastname '

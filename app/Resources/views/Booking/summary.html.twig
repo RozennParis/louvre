@@ -10,13 +10,13 @@
 
 
 {% block body %}
-    <div class="col-md-8 col-sm-12 personal-form">
+    <div class="col-lg-8 col-md-9 col-sm-12 personal-form">
         <main>
             <div class="row personal-form-title" >
                 <h4>{{ 'booking.summary'|trans }}{% block summaryTitle %}{% endblock %}</h4>
             </div>
 
-                <table class="table table-striped table-responsive justify-content-center">
+                <table class="table table-striped table-responsive-xl justify-content-center">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -43,33 +43,35 @@
                             <td>{{ ticket.price }}</td>
                         </tr>
                     {%  endfor %}
-                    </tbody>
-                        <tr>
-
-                            <td class="row">{{ 'booking.total_price'|trans }}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <th scope="row">{{ 'booking.total_price'|trans }}</th>
                             <td>{{ booking.totalPrice }}</td>
                         </tr>
+
+                    </tbody>
                 </table>
 
                 {% block payment %}
-                <form action="{{ path('summary') }}" method="post">
-                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                            data-key="{{ stripe_public_key }}"
-                            data-description="{{ 'payment.stripe_title'|trans }}"
-                            data-amount="{{ booking.totalPrice * 100}}"
-                            data-locale="{{ app.request.locale }}"
-                            data-currency='eur'
-                            data-label="{{ 'payment.stripe_label'|trans }}"
-                            data-email='{{ booking.email }}'>
-                    </script>
-                </form>
+                    <div class="d-flex justify-content-center payment-button">
+                        <form action="{{ path('summary') }}" method="post">
+                            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                    data-key="{{ stripe_public_key }}"
+                                    data-description="{{ 'payment.stripe_title'|trans }}"
+                                    data-amount="{{ booking.totalPrice * 100}}"
+                                    data-locale="{{ app.request.locale }}"
+                                    data-currency='eur'
+                                    data-label="{{ 'payment.stripe_label'|trans }}"
+                                    data-email='{{ booking.email }}'>
+                            </script>
+                        </form>
+                    </div>
                 {% endblock %}
         </main>
     </div>
 {% endblock %}
 
-{% block returnButton %}
-{% endblock %}
 
-{% block stylesheets %}
-{% endblock %}
