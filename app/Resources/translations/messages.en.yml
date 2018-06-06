@@ -11,6 +11,11 @@ booking:
     summary: "Booking's summary"
     total_price: 'Total price'
     visitDate: 'Visit date'
+breadcrumb:
+    booking: Order infos
+    tickets: Tickets infos
+    payment: Payment
+    confirmation: Confirmation
 email: Email
 english: en
 error:
@@ -20,7 +25,7 @@ error:
     server: server error
     page_server: The server failed
     page_server_bis: 'Leo !!! We have already told you to stop playing with the threads... !!!'
-    yarn: 'Please excuse us for this setback, all our technical team works to restart the server.'
+    yarn: 'Please excuse us for this setback, all our technical team works to make the server in rails.'
     yarn_picture: tangled threads
 french: fr
 from: from
@@ -37,6 +42,7 @@ louvre_night: 'Louvre museum by night'
 mail.booking.total_price: 'Booking''s total price'
 mona: 'In the meantime, you can always come to see me '
 mona_button: here
+not: no
 payment:
     stripe_title: 'Payment - Louvre Ticketing'
     stripe_label: 'Pay with card'
@@ -73,6 +79,12 @@ practical_news:
         senior: 'Senior rate, from 60 years '
     reduce_rate : "The reduced rate is granted in certain conditions: students, employee of the museum, the serviceman, the department of the Ministry of Culture... A supporting document will be necessarily asked"
     way_to_go: 'How to go to the Louvre ?'
+    where:
+            metro: 'By subway: lines 1 and 7, station "Palais-Royal/Musée du Louvre"; line 14, station "Pyramides"'
+            bus: 'By bus : bus n° 21, 24, 27, 39, 48, 68, 69, 72, 81, 95'
+            velib: 'Velib''stations near the museum :n°1015 : 2 place A. Malraux, n°1023 : 165 rue Saint-Honoré, n°1014 : 5 rue de l’Echelle, n°1013 : 186 rue Saint-Honoré.'
+            car: 'By car : an underground car park is accessible by the "avenue de Général-Lemonnier", every day from 7:00am to 11:00pm.'
+            boat: 'By taxi boat : Stopover "Louvre", quai François-Mitterrand'
 step_title: Step
 submit.button: Validate
 summary: 'Summary of booking n°%transactionId% of'

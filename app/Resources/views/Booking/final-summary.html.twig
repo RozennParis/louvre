@@ -1,7 +1,11 @@
 {% extends 'Booking/summary.html.twig' %}
 
 {% block title %}
-    {{parent()}} - {{ 'step_title'|trans }} 4
+    {{ 'head.main_title'|trans }} - {{ 'step_title'|trans }} 4
+{% endblock %}
+
+{% block breadcrumb %}
+    {% include 'Booking/breadcrumb.html.twig' with{'step': 4 }only %}
 {% endblock %}
 
 {% block step %}
@@ -12,6 +16,13 @@
     n°{{ booking.transactionId }}
 {% endblock %}
 
+{% block returnButton %}
+    <div class="d-flex justify-content-center payment-button">
+        <a class="mx-auto" href="{{ path('homepage') }}"><button class="btn" id="return-button">{{ 'ticketing_return'|trans }}</button></a>
+    </div>
+{% endblock %}
+
 {% block payment %}
 {% endblock %}
+
 

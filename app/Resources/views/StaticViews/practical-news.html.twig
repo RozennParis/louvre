@@ -63,13 +63,18 @@
     </div>
     <div class="form-block">
         <ul>
-            <li>{{ 'practical_news.rates.adult'|trans }} : 16€ </li>
-            <li>{{ 'practical_news.rates.child'|trans }} : 8€ </li>
-            <li>{{ 'practical_news.rates.under_four'|trans }} : 0€ </li>
-            <li>{{ 'practical_news.rates.senior'|trans }} : 12€ </li>
-            <li>{{ 'ticket.reduce_rate'|trans }}* : 10€ </li>
+            <li>{{ 'practical_news.where.metro'|trans }}</li>
+            <li>{{ 'practical_news.where.bus'|trans }}</li>
+            <li>{{ 'practical_news.where.velib'|trans }}</li>
+            <li>{{ 'practical_news.where.car'|trans }}</li>
+            <li>{{ 'practical_news.where.boat'|trans }}</li>
         </ul>
     </div>
+    {% block returnButton %}
+        <div class="d-flex justify-content-center payment-button">
+            <a class="mx-auto" href="{{ path('homepage') }}"><button class="btn" id="return-button">{{ 'ticketing_return'|trans }}</button></a>
+        </div>
+    {% endblock %}
 </main>
 {% endblock  %}
 {% block news %}{% endblock %}

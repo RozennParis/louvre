@@ -38,17 +38,18 @@ class BookingControllerTest extends WebTestCase
         $crawler = $client->request('GET', '/fr/');
 
         $form = $crawler->selectButton('indexValidation')->form();
-        $form['booking[visitDate]'] = '2018-06-01';
+        $form['booking[visitDate]'] = '01/12/2018';
         $form['booking[typeOfTicket]'] = 0;
         $form['booking[numberOfTickets]'] = 2;
-        $form['booking[email]'] = 'rozenn.paris@gmail.com';
+        $form['booking[email][first]'] = 'rozenn.paris@gmail.com';
+        $form['booking[email][second]'] = 'rozenn.paris@gmail.com';
         $crawler = $client->submit($form);
 
         $this->assertTrue($client->getResponse()->isRedirect()); //possible to put an absolute URL
 
         $crawler = $client->followRedirect();
 
-        $this->assertCount(2, $crawler->filter('#tickets_tickets > div'));
+        $this->assertCount(2, $crawler->filter('label:contains("Pays")'));
 
         $formTicket = $crawler->selectButton('ticketValidation')->form();
         $formTicket['tickets[tickets][0][lastName]'] = 'Rozenn';
@@ -68,7 +69,7 @@ class BookingControllerTest extends WebTestCase
 
         $crawler = $client->followRedirect();
 
-        $this->assertCount(8, $crawler->filter('td'));
+        $this->assertCount(18, $crawler->filter('td'));
 
     }
 

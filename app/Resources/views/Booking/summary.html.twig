@@ -8,6 +8,9 @@
     <h2 id="step-title">{{ 'step_title'|trans }} 3</h2>
 {% endblock %}
 
+{% block breadcrumb %}
+    {% include 'Booking/breadcrumb.html.twig' with{'step': 3 }only %}
+{% endblock %}
 
 {% block body %}
     <div class="col-lg-8 col-md-9 col-sm-12 personal-form">
@@ -43,6 +46,7 @@
                             <td>{{ ticket.price }}</td>
                         </tr>
                     {%  endfor %}
+                        <tr>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -70,8 +74,14 @@
                         </form>
                     </div>
                 {% endblock %}
+            {% block returnButton %}
+            {% endblock %}
         </main>
     </div>
+
+
+
 {% endblock %}
+
 
 

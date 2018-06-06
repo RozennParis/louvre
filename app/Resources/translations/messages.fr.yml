@@ -11,6 +11,11 @@ booking:
     summary: Récapitulatif de la commande
     total_price: Prix total
     visitDate: Date de visite
+breadcrumb:
+    booking: Info Commande
+    tickets: Info Tickets
+    payment: Paiement
+    confirmation: Confirmation
 email: Email
 english: en
 error:
@@ -20,7 +25,7 @@ error:
     server: erreur serveur
     page_server: Erreur de serveur
     page_server_bis: 'Leo !!! On t''a déjà dit de pas jouer avec les fils... !!!'
-    yarn: 'Veuillez nous excuser pour ce contretemps, toute notre équipe technique travaille afin de remettre le serveur en route.'
+    yarn: 'Veuillez nous excuser pour ce contretemps, toute notre équipe technique travaille afin de résoudre ce petit souci de serveur.'
     yarn_picture: fils emmêlés
 french: fr
 from: de
@@ -37,6 +42,7 @@ louvre_night: Le Louvre de nuit
 mail.booking.total_price: Prix total de la commande
 mona: 'En attendant, vous pouvez toujours venir me voir par  '
 mona_button: ici
+not: non
 payment:
     stripe_title: 'Paiement - Billetterie du Louvre'
     stripe_label: 'Paiement carte'
@@ -73,6 +79,12 @@ practical_news:
         senior: 'Tarif senior, dès de 60 ans '
     reduce_rate : "Le tarif réduit est accordé dans certaines conditions : étudiants, employé du musée, militaire, service du Ministère de la culture... Une pièce justificative sera obligatoirement demandée"
     way_to_go: 'Comment s''y rendre ?'
+    where:
+        metro: 'En métro : lignes 1 et 7, station "Palais-Royal / Musée du Louvre"; ligne 14, station "Pyramides"'
+        bus: 'En bus : bus n° 21, 24, 27, 39, 48, 68, 69, 72, 81, 95'
+        velib: 'Stations Velib'' à proximité du musée :n°1015 : 2 place A. Malraux, n°1023 : 165 rue Saint-Honoré, n°1014 : 5 rue de l’Echelle, n°1013 : 186 rue Saint-Honoré'
+        car: 'En voiture : un parc de stationnement souterrain est accessible par l''avenue du Général-Lemonnier, tous les jours de 7 h 00 à 23 h 00.'
+        boat: 'En Batobus : Escale "Louvre", quai François-Mitterrand'
 step_title: Étape
 submit.button: Valider
 summary: 'Récapitulatif de la commande n°%transactionId% du'

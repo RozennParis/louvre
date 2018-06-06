@@ -46,7 +46,7 @@
                         <th scope="row">{{ loop.index }}</th>
                         <td>{{ ticket.firstName }}</td>
                         <td>{{ ticket.lastName }}</td>
-                        <td>{{ (ticket.reduceRate)? 'x' : '' }}</td>
+                        <td>{{ (ticket.reduceRate)? 'x' : 'not'|trans }}</td>
                         <td>{{ ticket.price }}</td>
                     </tr>
                 {% endfor %}

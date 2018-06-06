@@ -157,6 +157,12 @@
             <h4 id="14">14 - {{ 'cgv.law'|trans }} </h4>
         </div>
         <div class="form-block">{{ 'cgv.paragraph.fourteenth'|trans }}</div>
+
+        {% block returnButton %}
+            <div class="d-flex justify-content-center payment-button">
+                <a class="mx-auto" href="{{ path('homepage') }}"><button class="btn" id="return-button">{{ 'ticketing_return'|trans }}</button></a>
+            </div>
+        {% endblock %}
     </main>
 {% endblock %}
 

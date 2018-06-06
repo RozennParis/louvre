@@ -1,0 +1,8 @@
+
+    <ol class="breadcrumb">
+        {% if step >= 1 %}<li class="breadcrumb-item col-md-3"><img src="{{ asset('images/number1.png') }}">  - {{ 'breadcrumb.booking'|trans }}</a></li>{% endif %}
+        {% if step >= 2 %}<li class="col-md-3"><img src="{{ asset('images/number2.png') }}"> - {{ 'breadcrumb.tickets'|trans }}</a></li>{% endif %}
+        {% if step >= 3 %}<li class="col-md-3"><img src="{{ asset('images/number3.png') }}"> - {{ 'breadcrumb.payment'|trans }}</a></li>{% endif %}
+        {% if step >= 4 %}<li class="col-md-3"><img src="{{ asset('images/number4.png') }}"> - {{ 'breadcrumb.confirmation'|trans }}</a></li>{% endif %}
+    </ol>
+

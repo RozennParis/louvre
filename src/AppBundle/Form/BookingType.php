@@ -22,11 +22,12 @@ class BookingType extends AbstractType
             ->add('visitDate', DateType::class, [
                 'widget'=> 'single_text',
                 'label' => 'booking.visitDate',
-                /*'html5' => false,
+                'format'=> 'dd/MM/yyyy',
+                'html5' => false,
                 'attr' => [
                     'class' => 'js-datepicker',
                     'data-provide' => 'datepicker',
-                    ],*/
+                    ],
                 'required' => true
             ])
             ->add('typeOfTicket', ChoiceType::class, [

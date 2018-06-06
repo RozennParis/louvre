@@ -72,6 +72,11 @@
         </div>
         <div class="form-block">{{ 'legal_mentions.liability_edit'|trans }}</div>
 
+        {% block returnButton %}
+            <div class="d-flex justify-content-center payment-button">
+                <a class="mx-auto" href="{{ path('homepage') }}"><button class="btn" id="return-button">{{ 'ticketing_return'|trans }}</button></a>
+            </div>
+        {% endblock %}
     </main>
 {% endblock %}
 {% block news %}{% endblock %}

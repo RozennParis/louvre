@@ -9,7 +9,12 @@
     <h2 id="step-title">{{ 'step_title'|trans }} 1</h2>
 {% endblock %}
 
+{% block breadcrumb %}
+    {% include 'Booking/breadcrumb.html.twig' with{'step': 1 }only %}
+{% endblock %}
+
 {% block body %}
+
     <div class="col-lg-8 col-md-9 col-sm-12 personal-form">
        <main>
            {{ form_start(form) }}
@@ -17,6 +22,7 @@
                <h4>1 - {{ 'booking.visitDate'|trans }}</h4>
            </div>
            <div class="form-block">
+
                {{ form_widget(form.visitDate) }}
                {{ form_errors(form.visitDate) }}
            </div>
@@ -48,8 +54,5 @@
            {{ form_end(form) }}
        </main>
     </div>
-{% endblock %}
-
-{% block returnButton %}
 {% endblock %}
 

@@ -14,11 +14,12 @@ use Symfony\Component\Validator\ConstraintValidator;
 
 class HalfDayValidator extends ConstraintValidator
 {
+    const HALF_DAY = 14;
 
-   public function validate($booking, Constraint $constraint)
+    public function validate($booking, Constraint $constraint)
     {
 
-       if ($booking->getVisitDate()->format('Y-m-d') === date('Y-m-d') && date('H') >= 14)
+       if ($booking->getVisitDate()->format('Y-m-d') === date('Y-m-d') && date('H') >= self::HALF_DAY)
         {
             $booking->setTypeOfTicket(false);
             $this->context->buildViolation($constraint->message)
