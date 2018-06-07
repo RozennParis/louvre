@@ -12,8 +12,8 @@ A Symfony project created on March 14, 2018, 3:49 pm.
  <h3>Installation de l'application</h3>
  <ol>
   <li> Se positionner dans le répertoire choisi</li>
- <li> Dans votre console : git clone </li>
- <li> cd Louvre</li>
+ <li> Dans la console, taper : git clone </li>
+ <li> cd louvre</li>
  <li> composer install</li>
  <li> Saisir les paramètres demandés par la console</li>
  <li> Crée la base de données : php bin/console doctrine:database:create</li>
