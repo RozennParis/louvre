@@ -12,8 +12,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="booking")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\BookingRepository")
- * @AppAssert\HalfDay(groups={"stepOne"})
  * @AppAssert\NotMoreThousand(groups={"stepOne"})
+ * @AppAssert\NotAfterEight(groups={"stepOne"}, payload={"severity"="error"})
+ * @AppAssert\NotAfterNine(groups={"stepOne"}, payload={"severity"="error"})
+ * @AppAssert\HalfDay(groups={"stepOne"}, payload={"severity"="error"})
  */
 class Booking
 {
@@ -62,6 +64,7 @@ class Booking
      * @AppAssert\NotTuesday(groups={"stepOne"}, payload={"severity"="error"})
      * @AppAssert\NotSunday(groups={"stepOne"}, payload={"severity"="error"})
      * @AppAssert\NotHolidays(groups={"stepOne"}, payload={"severity"="error"})
+
      * @ORM\Column(name="visitDate", type="datetime")
      */
     private $visitDate;

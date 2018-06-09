@@ -13,9 +13,14 @@ use Symfony\Component\Validator\Constraint;
  */
 class HalfDay extends Constraint
 {
+    /**
+     * @var string
+     */
     public $message = 'validator.half_day';
 
-
+    /**
+     * @return string
+     */
     public function getTargets()
     {
         return self::CLASS_CONSTRAINT;

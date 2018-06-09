@@ -8,6 +8,9 @@ use Symfony\Component\Validator\Constraint;
  */
 class NotHolidays extends Constraint
 {
+    /**
+     * @var string
+     */
     public $message = 'validator.not_holidays';
 }
 

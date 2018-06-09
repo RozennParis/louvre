@@ -1,7 +1,7 @@
-/*var currentYear= (new Date()).getUTCFullYear();*/
-var currentYear=2016;
+var currentYear= (new Date()).getUTCFullYear();
+
 function NotOpenedDates(year){
-    var newYearDay = new Date(Date.UTC(year, 0, 1)); /*new Date(year, "00", "01")*/
+    var newYearDay = new Date(Date.UTC(year, 0, 1));
     var laborDay = new Date(Date.UTC(year, 4, 1));
     var armistice1945 = new Date(Date.UTC(year, 4, 8));
     var nationalDay = new Date(Date.UTC(year, 6, 14));

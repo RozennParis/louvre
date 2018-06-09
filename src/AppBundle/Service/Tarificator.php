@@ -4,7 +4,10 @@ namespace AppBundle\Service;
 use AppBundle\Service\AgeCalculator;
 use PHPUnit\Runner\Exception;
 
-
+/**
+ * Class Tarificator
+ * @package AppBundle\Service
+ */
 class Tarificator
 {
     const ADULT_PRICE = 16;
@@ -13,7 +16,12 @@ class Tarificator
     const SENIOR_PRICE = 12;
     const REDUCE_PRICE = 10;
 
-
+    /**
+     * @param $reduceRate
+     * @param $age
+     * @param $typeOfTicket
+     * @return float|int
+     */
     public function priceOfTicket($reduceRate, $age, $typeOfTicket)
     {
         $price = 0;

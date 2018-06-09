@@ -13,7 +13,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-
+/**
+ * Class BookingController
+ * @package AppBundle\Controller
+ */
 class BookingController extends Controller
 {
     /**
@@ -142,7 +145,6 @@ class BookingController extends Controller
     {
         return $this->render('StaticViews/legal-mentions.html.twig');
     }
-
 }
 
 

@@ -12,22 +12,21 @@
     </div>
 {% endblock %}
 
-{%- block form_errors -%}
-    {%- if errors|length > 0 -%}
+{% block form_errors %}
+    {% if errors|length > 0 %}
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <ul class="no-list">
-                {%- for error in errors -%}
+                {% for error in errors %}
                     <li class="no-list"><img src="{{ asset('images/danger-sing.png') }}">  {{ error.message }}
-
                     </li>
-                {%- endfor -%}
+                {% endfor %}
             </ul>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-    {%- endif -%}
-{%- endblock form_errors -%}
+    {% endif %}
+{% endblock form_errors %}
 
 
 

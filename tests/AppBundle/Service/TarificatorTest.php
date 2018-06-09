@@ -5,6 +5,10 @@ namespace Tests\AppBundle\Service;
 use AppBundle\Service\Tarificator;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class TarificatorTest
+ * @package Tests\AppBundle\Service
+ */
 class TarificatorTest extends TestCase
 {
     private $price;
@@ -18,6 +22,9 @@ class TarificatorTest extends TestCase
         $this->assertSame($expectedPrice, $price->priceOfTicket($reduceRate, $age, $typeOfTicket));
     }
 
+    /**
+     * @return array
+     */
     public function dataForPrice()
     {
         return [
@@ -51,6 +58,9 @@ class TarificatorTest extends TestCase
         $price->priceOfTicket($reduceRate, $age, $typeOfTicket);
     }
 
+    /**
+     * @return array
+     */
     public function invalidArgument()
     {
         return [

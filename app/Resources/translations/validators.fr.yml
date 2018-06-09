@@ -4,4 +4,5 @@ validator:
     not_holidays: "La réservation n'est pas disponible les jours fériés"
     not_tuesday: "La réservation n'est pas disponible le mardi"
     not_sunday: "La réservation n'est pas disponible le dimanche"
+    not_after_eight: "Le musée est fermé pour aujourd'hui, il n'est plus possible de commander de billets"
 booking.email_error: Les emails saisis ne sont pas identiques.

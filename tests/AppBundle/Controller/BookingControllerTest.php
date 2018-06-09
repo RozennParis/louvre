@@ -6,6 +6,10 @@ namespace Tests\AppBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * Class BookingControllerTest
+ * @package Tests\AppBundle\Controller
+ */
 class BookingControllerTest extends WebTestCase
 {
     /**
@@ -19,6 +23,9 @@ class BookingControllerTest extends WebTestCase
         $this->assertSame($expectedResult, $client->getResponse()->getStatusCode());
     }
 
+    /**
+     * @return array
+     */
     public function findYourWay()
     {
         return [
@@ -30,7 +37,9 @@ class BookingControllerTest extends WebTestCase
         ];
     }
 
-
+    /**
+     * Functional test from step one to step three, stop before payment
+     */
     public function testStepOne()
     {
         $client = static::createClient();

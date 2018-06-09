@@ -6,6 +6,10 @@ use AppBundle\Entity\Booking;
 use AppBundle\Manager\BookingManager;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class BookingManagerTest
+ * @package Tests\AppBundle\Manager
+ */
 class BookingManagerTest extends TestCase
 {
     /**
@@ -30,6 +34,9 @@ class BookingManagerTest extends TestCase
         $this->assertSame($expectedNumber,$booking->getTickets()->count());
     }
 
+    /**
+     * @return array
+     */
     public function dataForAdditionOfTickets()
     {
         return [

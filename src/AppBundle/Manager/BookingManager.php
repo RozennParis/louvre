@@ -7,6 +7,7 @@ use AppBundle\Entity\Ticket;
 use AppBundle\Exception\NoBookingException;
 use AppBundle\Form\BookingType;
 use AppBundle\Form\TicketsType;
+
 use AppBundle\Service\AgeCalculator;
 use AppBundle\Service\MailerService;
 use AppBundle\Service\Tarificator;
@@ -16,7 +17,10 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-
+/**
+ * Class BookingManager
+ * @package AppBundle\Manager
+ */
 class BookingManager
 {
     /**
@@ -49,7 +53,15 @@ class BookingManager
     private $mailerService;
 
 
-
+    /**
+     * BookingManager constructor.
+     * @param EntityManagerInterface $em
+     * @param SessionInterface $session
+     * @param Tarificator $tarificator
+     * @param AgeCalculator $ageCalculator
+     * @param Payment $payment
+     * @param MailerService $mailerService
+     */
     public function __construct(EntityManagerInterface $em, SessionInterface $session, Tarificator $tarificator, AgeCalculator $ageCalculator, Payment $payment, MailerService $mailerService)
     {
         $this->entityManager = $em;
@@ -60,6 +72,9 @@ class BookingManager
         $this->mailerService = $mailerService;
     }
 
+    /**
+     * @return Booking|mixed
+     */
     public function initBooking()
     {
         try {
@@ -72,6 +87,9 @@ class BookingManager
         return $booking;
     }
 
+    /**
+     * @param Booking $booking
+     */
     public function completeInit(Booking $booking)
     {
         while (count($booking->getTickets()) !== $booking->getNumberOfTickets())
@@ -84,7 +102,10 @@ class BookingManager
         }
     }
 
-
+    /**
+     * @param Booking $booking
+     * @return Booking
+     */
     public function getTicketPrice(Booking $booking)
     {
         $tickets = $booking->getTickets();
@@ -104,7 +125,11 @@ class BookingManager
         return $booking;
     }
 
-
+    /**
+     * @param Request $request
+     * @param Booking $booking
+     * @return bool|mixed|null
+     */
     public function doPayment(Request $request, Booking $booking)
     {
         $transactionId = $this->payment->payment($booking, $request->request->get('stripeToken'));
@@ -119,6 +144,10 @@ class BookingManager
         return $transactionId;
     }
 
+    /**
+     * @return mixed
+     * @throws NoBookingException
+     */
     public function getCurrentBooking()
     {
         $booking = $this->session->get('booking'); //gérer le cas où pas de booking
@@ -129,16 +158,21 @@ class BookingManager
         return $booking;
     }
 
+    /**
+     *
+     */
     public function clearSession()
     {
         $this->session->clear();
     }
 
+    /**
+     * @param Booking $booking
+     * @return mixed
+     */
     public function recoverBookingId(Booking $booking)
     {
         $id = $this->session->get('booking')->getId();
         return $id;
     }
-
-
 }

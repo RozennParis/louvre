@@ -11,12 +11,19 @@ namespace AppBundle\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
+/**
+ * Class NotTuesdayValidator
+ * @package AppBundle\Validator\Constraints
+ */
 class NotTuesdayValidator extends ConstraintValidator
 {
     const TUESDAY = "2";
 
+    /**
+     * @param mixed $visitDate
+     * @param Constraint $constraint
+     */
     public function validate($visitDate, Constraint $constraint)
-
     {
 
         if ( $visitDate->format('N') === self::TUESDAY)

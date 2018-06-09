@@ -4,4 +4,5 @@ validator:
     not_holidays: "It's not possible to reserve a holiday"
     not_tuesday: "It's not possible to reserve a tuesday"
     not_sunday: "It's not possible to reserve a sunday"
+    not_after_eight: "The museum is closed by now, it's not possible anymore to book of tickets"
 booking. email_error: The email fields must match.

@@ -9,15 +9,28 @@ use Stripe\Error\Card;
 use Stripe\Stripe;
 
 
+/**
+ * Class Payment
+ * @package AppBundle\Service
+ */
 class Payment
 {
     private $secretKey;
 
+    /**
+     * Payment constructor.
+     * @param $secretKey
+     */
     public function __construct($secretKey)
     {
         $this->secretKey = $secretKey;
     }
 
+    /**
+     * @param Booking $booking
+     * @param $token
+     * @return bool|mixed|null
+     */
     public function payment(Booking $booking, $token)
     {
         Stripe::setApiKey($this->secretKey);

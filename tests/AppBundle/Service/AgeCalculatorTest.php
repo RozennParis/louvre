@@ -5,6 +5,10 @@ namespace Tests\AppBundle\Service;
 use AppBundle\Service\AgeCalculator;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class AgeCalculatorTest
+ * @package Tests\AppBundle\Service
+ */
 class AgeCalculatorTest extends TestCase
 {
     /**
@@ -17,6 +21,9 @@ class AgeCalculatorTest extends TestCase
         $this->assertEquals($expectedAge, $age->ageCalcul($visitDate, $birthDate));
     }
 
+    /**
+     * @return array
+     */
     public function datesForCalculation()
     {
         return [

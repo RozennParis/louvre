@@ -14,6 +14,9 @@ use Symfony\Component\Validator\Constraint;
  */
 class NotSunday extends Constraint
 {
+    /**
+     * @var string
+     */
     public $message = 'validator.not_sunday';
 }
 

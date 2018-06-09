@@ -14,18 +14,29 @@ use Swift_Image;
 use Twig_Environment;
 use AppBundle\Entity\Booking;
 
-
+/**
+ * Class MailerService
+ * @package AppBundle\Service
+ */
 class MailerService
 {
     private $mailer;
     private $twig;
 
+    /**
+     * MailerService constructor.
+     * @param Swift_Mailer $mailer
+     * @param Twig_Environment $twig
+     */
     public function __construct( Swift_Mailer $mailer, Twig_Environment $twig)
     {
         $this->mailer = $mailer;
         $this->twig = $twig;
     }
 
+    /**
+     * @param Booking $booking
+     */
     public function sendMail(Booking $booking)
     {
         $message = (new Swift_Message())

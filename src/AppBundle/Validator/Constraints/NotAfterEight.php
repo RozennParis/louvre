@@ -1,25 +1,20 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rozenn
- * Date: 25/04/18
- * Time: 10:35
- */
-
 namespace AppBundle\Validator\Constraints;
 
 use Symfony\Component\Validator\Constraint;
+
 /**
- * Class NotMoreThousand
+ * Class NotAfterEight
  * @package AppBundle\Validator\Constraints
  * @Annotation
  */
-class NotMoreThousand extends Constraint
+class NotAfterEight extends Constraint
+
 {
     /**
      * @var string
      */
-    public $message = 'validator.not.more.thousand';
+    public $message = 'validator.not_after_eight';
 
     /**
      * @return string

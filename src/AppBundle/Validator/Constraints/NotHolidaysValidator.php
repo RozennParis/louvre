@@ -4,7 +4,10 @@ namespace AppBundle\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-
+/**
+ * Class NotHolidaysValidator
+ * @package AppBundle\Validator\Constraints
+ */
 class NotHolidaysValidator extends ConstraintValidator
 {
     private $holidays;

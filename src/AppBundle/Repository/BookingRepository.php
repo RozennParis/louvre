@@ -11,6 +11,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class BookingRepository extends EntityRepository
 {
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function getClientBooking($id)
     {
 
@@ -27,12 +31,14 @@ class BookingRepository extends EntityRepository
             ->getSingleResult();
     }
 
+    /**
+     * @param $visitDate
+     * @return mixed
+     */
     public function getNumberOfTicketPerDay($visitDate)
     {
         $qb = $this
             ->createQueryBuilder('b')
-//            ->innerJoin('b.tickets', 't')
-//            ->addSelect('t')
             ->select('SUM(b.numberOfTickets)')
             ->where('b.visitDate = :visitDate')
             ->setParameter('visitDate', $visitDate)
