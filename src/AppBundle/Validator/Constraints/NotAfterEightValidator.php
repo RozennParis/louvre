@@ -11,12 +11,9 @@ use Symfony\Component\Validator\ConstraintValidator;
 class NotAfterEightValidator extends \Symfony\Component\Validator\ConstraintValidator
 {
     const MONDAY = "1";
-    const WEDNESDAY = "3";
     const THURSDAY = "4";
-    const FRIDAY = "5";
     const SATURDAY = "6";
     const EIGHTEEN = 18;
-    const TWENTY_ONE = '21:45';
 
     /**
      * @param mixed $visitDate
