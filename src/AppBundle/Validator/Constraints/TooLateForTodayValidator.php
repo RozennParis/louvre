@@ -32,8 +32,8 @@ class TooLateForTodayValidator extends ConstraintValidator
 
         if ($booking->getVisitDate()->format('Y-m-d') === date('Y-m-d') && date('H:i') >= self::EARLY_CLOSE){
             switch ($booking->getVisitDate()->format('N')){
-                case (self::MONDAY | self::THURSDAY | self::SATURDAY):
-                case (self::WEDNESDAY | self::FRIDAY  && date('H:i') >= self::LATE_CLOSE):
+                case (self::MONDAY || self::THURSDAY || self::SATURDAY):
+                case (self::WEDNESDAY || self::FRIDAY  && date('H:i') >= self::LATE_CLOSE):
                     $this->context->buildViolation($constraint->message)
                         ->atPath('visitDate')
                         ->addViolation();

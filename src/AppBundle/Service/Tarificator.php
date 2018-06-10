@@ -25,7 +25,7 @@ class Tarificator
     public function priceOfTicket($reduceRate, $age, $typeOfTicket)
     {
         $price = 0;
-        if (!is_bool($reduceRate) | !is_int($age) | !is_bool($typeOfTicket) )
+        if (!is_bool($reduceRate) || !is_int($age) || !is_bool($typeOfTicket) )
         {
             throw new \InvalidArgumentException('The format of arguments is wrong');
         }
