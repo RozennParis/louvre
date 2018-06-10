@@ -14,6 +14,10 @@ class TarificatorTest extends TestCase
     private $price;
 
     /**
+     * @param $reduceRate
+     * @param $age
+     * @param $typeOfTicket
+     * @param $expectedPrice
      * @dataProvider dataForPrice
      */
     public function testPriceOfTicket($reduceRate, $age, $typeOfTicket, $expectedPrice)

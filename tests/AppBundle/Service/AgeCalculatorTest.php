@@ -12,6 +12,9 @@ use PHPUnit\Framework\TestCase;
 class AgeCalculatorTest extends TestCase
 {
     /**
+     * @param $visitDate
+     * @param $birthDate
+     * @param $expectedAge
      * @dataProvider datesForCalculation
      */
     public function testAgeCalcul($visitDate, $birthDate, $expectedAge)

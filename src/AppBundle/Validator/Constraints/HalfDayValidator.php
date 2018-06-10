@@ -27,7 +27,7 @@ class HalfDayValidator extends ConstraintValidator
     public function validate($booking, Constraint $constraint)
     {
 
-       if ($booking->getVisitDate()->format('Y-m-d') === date('Y-m-d') && date('H') >= self::HALF_DAY && date('H') < NotAfterEightValidator::EIGHTEEN )
+       if ($booking->getVisitDate()->format('Y-m-d') === date('Y-m-d') && date('H') >= self::HALF_DAY && date('H') < TooLateForTodayValidator::EARLY_CLOSE )
         {
             $booking->setTypeOfTicket(false);
             $this->context->buildViolation($constraint->message)

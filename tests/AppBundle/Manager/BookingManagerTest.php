@@ -19,7 +19,7 @@ class BookingManagerTest extends TestCase
      */
     public function testCompleteInit($numberOfTickets, $expectedNumber)
     {
-        $booking = new Booking(); // -> faire setUp()
+        $booking = new Booking();
         $booking->setNumberOfTickets($numberOfTickets);
 
         /**

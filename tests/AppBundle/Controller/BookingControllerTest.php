@@ -13,6 +13,9 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class BookingControllerTest extends WebTestCase
 {
     /**
+     * @param $way
+     * @param $address
+     * @param $expectedResult
      * @dataProvider findYourWay
      */
     public function testPagesAreUp($way, $address, $expectedResult)

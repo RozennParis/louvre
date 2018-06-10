@@ -1,20 +1,18 @@
 <?php
 namespace AppBundle\Validator\Constraints;
 
-use Symfony\Component\Validator\Constraint;
-
+use \Symfony\Component\Validator\Constraint;
 /**
- * Class NotAfterNine
+ * Class TooLateForToday
  * @package AppBundle\Validator\Constraints
  * @Annotation
  */
-class NotAfterNine extends Constraint
-
+class TooLateForToday extends \Symfony\Component\Validator\Constraint
 {
     /**
      * @var string
      */
-    public $message = 'validator.not_after_eight';
+    public $message = 'validator.too_late_for_today';
 
     /**
      * @return string
