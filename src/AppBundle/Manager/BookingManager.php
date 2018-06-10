@@ -5,15 +5,11 @@ namespace AppBundle\Manager;
 use AppBundle\Entity\Booking;
 use AppBundle\Entity\Ticket;
 use AppBundle\Exception\NoBookingException;
-use AppBundle\Form\BookingType;
-use AppBundle\Form\TicketsType;
-
 use AppBundle\Service\AgeCalculator;
 use AppBundle\Service\MailerService;
 use AppBundle\Service\Tarificator;
 use AppBundle\Service\Payment;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
@@ -159,7 +155,7 @@ class BookingManager
     }
 
     /**
-     *
+     * method to clear the session
      */
     public function clearSession()
     {

@@ -17,8 +17,8 @@ class TooLateForTodayValidator extends ConstraintValidator
     const THURSDAY = "4";
     const FRIDAY = "5";
     const SATURDAY = "6";
-    const EARLY_CLOSE = '11:00';
-    const LATE_CLOSE = '11:45';
+    const EARLY_CLOSE = '18:00';
+    const LATE_CLOSE = '21:45';
 
 
     /**
